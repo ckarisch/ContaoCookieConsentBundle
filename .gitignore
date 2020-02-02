@@ -1,5 +1,4 @@
 .ftpconfig
-vendor
 
 # Composer
 /composer.lock
