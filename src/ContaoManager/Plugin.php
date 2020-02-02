@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of [package name].
+ * Cookie Consent Plugin for Contao Open Source CMS
  *
- * (c) John Doe
+ * (c) Christof Karisch
  *
  * @license LGPL-3.0-or-later
  */

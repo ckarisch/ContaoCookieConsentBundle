@@ -1,0 +1,64 @@
+<?php
+
+if (true) {
+    $GLOBALS['TL_CSS'][] = 'bundles/contaocookieconsent/css/cookieconsent.min.css|all' . ($this->combineAssets ? '|static' : '');
+
+    $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/contaocookieconsent/js/cookieconsent.min.js|static';
+}
+?>
+
+<div id="<?= $this->cookie ?>" class="mod_cookieconsent" data-cookiebar="<?= $this->cookie ?>"<?php if ($this->ttl): ?> data-cookiebar-ttl="<?= $this->ttl ?>"<?php endif; ?>>
+	<div class="privacy_overlay"></div>
+	<div class="privacy_popup">
+		<div class="privacy_inside">
+			<div class="privacy_content">
+				<div class="cookie_settings">
+					<p class="cookie_info">Bitte treffen Sie eine Auswahl um fortzufahren</p>
+					<form id="cookie_settings" name="cookie_settings" method="post">
+						<div class="radio_container cookies tab">
+							<div class="palette">
+								<div class="item">
+									<div class="widget widget-radio">
+										<input type="radio" class="radio" name="privacy" id="cookie_consent_1" value="1">
+										<div class="widget-label">
+											<label for="cookie_consent_1">Erforderlich
+                        <span class="info">Notwendige Cookies und Google Fonts zulassen, damit die Website korrekt funktioniert</span>
+											</label>
+										</div>
+									</div>
+								</div>
+								<div class="item">
+									<div class="widget widget-radio">
+										<input type="radio" class="radio" name="privacy" id="cookie_consent_2" value="2">
+										<div class="widget-label">
+											<label for="cookie_consent_2">Komfort
+                        <span class="info">Es werden notwendige Cookies, Google Fonts, Google Maps, OpenStreetMap, Youtube und Social Media Liks geladen</span>
+											</label>
+										</div>
+									</div>
+								</div>
+								<div class="item">
+									<div class="widget widget-radio">
+										<input type="radio" class="radio" name="privacy" id="cookie_consent_3" value="3">
+										<div class="widget-label">
+											<label for="cookie_consent_3">Statistik
+                        <span class="info">Es werden notwendige Cookies, Google Fonts, Google Maps, OpenStreetMap, Youtube, Social Media Liks und Google Analytics geladen</span>
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="ce_hyperlink">
+							<input type="submit" name="save" class="submit" value="Einstellungen speichern &amp; fortfahren">
+						</div>
+					</form>
+					<div class="links">
+						<a href="datenschutz.html" title="Datenschutz">Datenschutz</a>
+            <a href="impressum.html" title="Impressum">Impressum</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

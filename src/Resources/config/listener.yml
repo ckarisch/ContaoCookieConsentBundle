@@ -1,0 +1,6 @@
+services:
+    fz_contao-cookie-consent-bundle.listener.hooks:
+        class: Fz\ContaoCookieConsentBundle\EventListener\TemplateListener
+        public: true
+        arguments:
+            - "@contao.framework"
