@@ -14,7 +14,7 @@ use Contao\CoreBundle\ContaoCoreBundle;
 use Contao\ManagerPlugin\Bundle\BundlePluginInterface;
 use Contao\ManagerPlugin\Bundle\Config\BundleConfig;
 use Contao\ManagerPlugin\Bundle\Parser\ParserInterface;
-use Fz\ContaoCookieConsentBundle\ContaoCookieConsentBundle;
+use Formundzeichen\ContaoCookieConsentBundle\ContaoCookieConsentBundle;
 
 class Plugin implements BundlePluginInterface
 {

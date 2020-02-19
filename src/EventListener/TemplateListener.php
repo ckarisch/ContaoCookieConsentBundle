@@ -9,7 +9,7 @@
  */
 
 namespace Formundzeichen\ContaoCookieConsentBundle\EventListener;
-use Fz\ContaoCookieConsentBundle\ContaoCookieConsentBundle;
+use Formundzeichen\ContaoCookieConsentBundle\ContaoCookieConsentBundle;
 
 use Contao\PageModel;
 

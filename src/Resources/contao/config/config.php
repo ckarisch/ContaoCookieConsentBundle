@@ -7,4 +7,4 @@
  * @license LGPL-3.0-or-later
  */
 
-$GLOBALS['TL_HOOKS']['outputFrontendTemplate'][] = ['Fz\ContaoCookieConsentBundle\EventListener\TemplateListener', 'onOutputFrontendTemplate'];
+$GLOBALS['TL_HOOKS']['outputFrontendTemplate'][] = ['Formundzeichen\ContaoCookieConsentBundle\EventListener\TemplateListener', 'onOutputFrontendTemplate'];
