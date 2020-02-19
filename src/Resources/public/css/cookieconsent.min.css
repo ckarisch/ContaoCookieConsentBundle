@@ -24,7 +24,7 @@ input.submit, button.submit {
 	display: none;
 }
 
-.mod_cookieconsent.open {
+.mod_cookieconsent.open, .mod_cookieconsent.open-user {
 	display: block;
 }
 
