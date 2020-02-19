@@ -19,7 +19,7 @@ if (true) {
 							<div class="palette">
 								<div class="item">
 									<div class="widget widget-radio">
-										<input type="radio" class="radio" name="privacy" id="cookie_consent_1" value="1">
+										<input type="radio" class="radio" name="privacy" id="cookie_consent_1" value="1" checked="">
 										<div class="widget-label">
 											<label for="cookie_consent_1">Erforderlich
                         <span class="info">Notwendige Cookies und Google Fonts zulassen, damit die Website korrekt funktioniert</span>
