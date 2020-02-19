@@ -8,7 +8,7 @@
  * @license LGPL-3.0-or-later
  */
 
-namespace Fz\ContaoCookieConsentBundle\Tests;
+namespace Formundzeichen\ContaoCookieConsentBundle\Tests;
 
 use Fz\ContaoCookieConsentBundle\ContaoCookieConsentBundle;
 use PHPUnit\Framework\TestCase;

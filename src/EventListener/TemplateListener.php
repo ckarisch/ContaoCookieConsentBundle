@@ -8,7 +8,7 @@
  * @license LGPL-3.0-or-later
  */
 
-namespace Fz\ContaoCookieConsentBundle\EventListener;
+namespace Formundzeichen\ContaoCookieConsentBundle\EventListener;
 use Fz\ContaoCookieConsentBundle\ContaoCookieConsentBundle;
 
 use Contao\PageModel;

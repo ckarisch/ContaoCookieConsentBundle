@@ -8,7 +8,7 @@
  * @license LGPL-3.0-or-later
  */
 
-namespace Fz\ContaoCookieConsentBundle;
+namespace Formundzeichen\ContaoCookieConsentBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
