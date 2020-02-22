@@ -24,8 +24,12 @@ input.submit, button.submit {
 	display: none;
 }
 
-.mod_cookieconsent.open, .mod_cookieconsent.open-user {
+.mod_cookieconsent.open {
 	display: block;
+}
+
+.mod_cookieconsent.open-user {
+	display: block !important;
 }
 
 .mod_cookieconsent,
@@ -185,5 +189,5 @@ p.privacy a {
 
 
 .hide_cookie_consent .mod_cookieconsent {
-	display: none!important;
+	display: none;
 }
