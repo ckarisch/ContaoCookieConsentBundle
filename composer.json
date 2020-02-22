@@ -1,5 +1,5 @@
 {
-    "name": "fz/contao-cookie-consent-bundle",
+    "name": "formundzeichen/contao-cookie-consent-bundle",
     "type": "symfony-bundle",
     "description": "Cookie Consent",
     "homepage": "https://contao.org",
@@ -29,16 +29,16 @@
         "symfony/phpunit-bridge": "^3.2"
     },
     "extra": {
-        "contao-manager-plugin": "Fz\\ContaoCookieConsentBundle\\ContaoManager\\Plugin"
+        "contao-manager-plugin": "Formundzeichen\\ContaoCookieConsentBundle\\ContaoManager\\Plugin"
     },
     "autoload": {
         "psr-4": {
-            "Fz\\ContaoCookieConsentBundle\\": "src/"
+            "Formundzeichen\\ContaoCookieConsentBundle\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Fz\\ContaoCookieConsentBundle\\Tests\\": "tests/"
+            "Formundzeichen\\ContaoCookieConsentBundle\\Tests\\": "tests/"
         }
     },
     "support": {

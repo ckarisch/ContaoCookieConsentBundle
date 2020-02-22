@@ -10,7 +10,7 @@
 
 namespace Formundzeichen\ContaoCookieConsentBundle\Tests;
 
-use Fz\ContaoCookieConsentBundle\ContaoCookieConsentBundle;
+use Formundzeichen\ContaoCookieConsentBundle\ContaoCookieConsentBundle;
 use PHPUnit\Framework\TestCase;
 
 class ContaoCookieConsentBundleTest extends TestCase
@@ -19,6 +19,6 @@ class ContaoCookieConsentBundleTest extends TestCase
     {
         $bundle = new ContaoCookieConsentBundle();
 
-        $this->assertInstanceOf('Fz\ContaoCookieConsentBundle\ContaoCookieConsentBundle', $bundle);
+        $this->assertInstanceOf('Formundzeichen\ContaoCookieConsentBundle\ContaoCookieConsentBundle', $bundle);
     }
 }
