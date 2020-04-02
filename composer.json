@@ -1,8 +1,8 @@
 {
     "name": "formundzeichen/contao-cookie-consent-bundle",
-    "type": "symfony-bundle",
+    "type": "contao-bundle",
     "description": "Cookie Consent",
-    "homepage": "https://contao.org",
+    "homepage": "https://www.formundzeichen.at",
     "license": "LGPL-3.0-or-later",
     "authors": [
         {
@@ -12,8 +12,7 @@
     ],
     "require": {
         "php": "^5.6 || ^7.0",
-        "contao/core-bundle": "^4.8",
-        "symfony/framework-bundle": "^4.3"
+        "contao/core-bundle": "^4.8"
     },
     "conflict": {
         "contao/core": "*",
@@ -42,7 +41,7 @@
         }
     },
     "support": {
-        "issues": "https://github.com/contao/skeleton-bundle/issues",
-        "source": "https://github.com/contao/skeleton-bundle"
+        "issues": "https://github.com/ckarisch/ContaoCookieConsentBundle/issues",
+        "source": "https://github.com/ckarisch/ContaoCookieConsentBundle"
     }
 }
