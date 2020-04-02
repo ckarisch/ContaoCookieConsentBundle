@@ -1,9 +1,9 @@
-input.submit[type="submit"],
-button.submit[type="submit"] {
+.mod_cookieconsent input.submit[type="submit"],
+.mod_cookieconsent button.submit[type="submit"] {
 	background: #519249;
 }
 
-input.submit, button.submit {
+.mod_cookieconsent input.submit, .mod_cookieconsent button.submit {
   display: inline-block;
   padding: 1em 2em;
   cursor: pointer;
@@ -150,7 +150,7 @@ input.submit, button.submit {
 	margin-bottom: 10px;
 }
 
-p.privacy {
+.mod_cookieconsent p.privacy {
 	color: rgb(255,255,255);
 	background: red;
 	font-weight: bold;
@@ -159,12 +159,12 @@ p.privacy {
 	margin: 20px;
 }
 
-p.privacy a {
+.mod_cookieconsent p.privacy a {
 	text-decoration: underline;
 	color: rgba(255,255,255)!important;
 }
 
-.privacy.hidden {
+.mod_cookieconsent .privacy.hidden {
 	display: none;
 }
 
