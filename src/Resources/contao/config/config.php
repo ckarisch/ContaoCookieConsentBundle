@@ -8,3 +8,4 @@
  */
 
 $GLOBALS['TL_HOOKS']['outputFrontendTemplate'][] = ['Formundzeichen\ContaoCookieConsentBundle\EventListener\TemplateListener', 'onOutputFrontendTemplate'];
+$GLOBALS['TL_HOOKS']['getPageLayout'][] = ['Formundzeichen\ContaoCookieConsentBundle\EventListener\GetPageLayoutListener', 'onGetPageLayout'];

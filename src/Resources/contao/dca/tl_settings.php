@@ -19,6 +19,20 @@ $GLOBALS['TL_DCA']['tl_settings']['fields']['fzCookiesTemplateName'] = array
 			'eval'                    => array('tl_class'=>'w50')
 		);
 
+$GLOBALS['TL_DCA']['tl_settings']['fields']['fzCookiesEnableOnPrivacyPage'] = array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_settings']['fzCookiesEnableOnPrivacyPage'],
+			'inputType'               => 'checkbox',
+			'eval'                    => array('tl_class'=>'w50')
+		);
+
+$GLOBALS['TL_DCA']['tl_settings']['fields']['fzCookiesEnableOnImprintPage'] = array
+(
+	'label'                   => &$GLOBALS['TL_LANG']['tl_settings']['fzCookiesEnableOnImprintPage'],
+	'inputType'               => 'checkbox',
+	'eval'                    => array('tl_class'=>'w50')
+);
+
 $GLOBALS['TL_DCA']['tl_settings']['fields']['fzCookiesHeading'] = array
 		(
 			'label'                   => &$GLOBALS['TL_LANG']['tl_settings']['fzCookiesHeading'],
@@ -99,4 +113,4 @@ $GLOBALS['TL_DCA']['tl_settings']['fields']['fzCookiesCookieDescription3'] = arr
 /**
  * Modify palette
  */
-$GLOBALS['TL_DCA']['tl_settings']['palettes']['default'] .= ';{fzCookiePopupSettings:hide},fzCookiesTemplateName,fzCookiesHeading,fzCookiesImprintTitle,fzCookiesImprintPage,fzCookiesPrivacyTitle,fzCookiesPrivacyPage,fzCookiesCookieTitle1,fzCookiesCookieDescription1,fzCookiesCookieTitle2,fzCookiesCookieDescription2,fzCookiesCookieTitle3,fzCookiesCookieDescription3';
+$GLOBALS['TL_DCA']['tl_settings']['palettes']['default'] .= ';{fzCookiePopupSettings:hide},fzCookiesTemplateName,fzCookiesHeading,fzCookiesEnableOnImprintPage,fzCookiesEnableOnPrivacyPage,fzCookiesImprintTitle,fzCookiesImprintPage,fzCookiesPrivacyTitle,fzCookiesPrivacyPage,fzCookiesCookieTitle1,fzCookiesCookieDescription1,fzCookiesCookieTitle2,fzCookiesCookieDescription2,fzCookiesCookieTitle3,fzCookiesCookieDescription3';
