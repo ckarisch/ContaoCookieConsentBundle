@@ -26,14 +26,9 @@ class TemplateListener
     {
         if (null !== ($rootPage = PageModel::findByPk($GLOBALS['objPage']->rootId)) ) { //}&& $rootPage->cookiebar_enable) {
             $generator = new ContaoCookieConsentBundle();
-            // $cookiebar = '<div style="display:none;">Hello World !</div>';
-            $cookiebar = $generator->createTemplate($rootPage->row())->parse();
-
-            if ('before_wrapper' === $rootPage->cookiebar_placement) {
-                $buffer = str_replace('<div id="wrapper">', $cookiebar.'<div id="wrapper">', $buffer);
-            } else {
-                $buffer = str_replace('</body>', $cookiebar.'</body>', $buffer);
-            }
+            $templateName = $GLOBALS['TL_CONFIG']['fzCookiesTemplateName'] ? $GLOBALS['TL_CONFIG']['fzCookiesTemplateName'] : 'mod_cookieconsent1';
+            $cookiebar = $generator->createTemplate($rootPage->row(), $templateName)->parse();
+            $buffer = str_replace('</body>', $cookiebar.'</body>', $buffer);
         }
 
         return $buffer;

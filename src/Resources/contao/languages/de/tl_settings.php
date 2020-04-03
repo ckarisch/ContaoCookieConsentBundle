@@ -16,6 +16,10 @@ $GLOBALS['TL_LANG']['tl_settings']['fzCookiePopupSettings']      = 'Cookie Popup
 /**
  * Fields
  */
+
+// Template Select
+$GLOBALS['TL_LANG']['tl_settings']['fzCookiesSelect']   = array('Cookie Popup Extended (necessary cookies are preselected)', 'Cookie Popup (accept all and settings button)');
+
 $GLOBALS['TL_LANG']['tl_settings']['fzCookiesHeading']   = array('Cookie Popup Überschrift', 'Tragen Sie hier die Überschrift des Cookie Popups ein.');
 $GLOBALS['TL_LANG']['tl_settings']['fzCookiesImprintTitle']   = array('Impressum Link Titel', 'Der Titel des Impressum Links, der unten im Popup zu sehen ist');
 $GLOBALS['TL_LANG']['tl_settings']['fzCookiesImprintPage']   = array('Impressum Link', 'Der Link zur Impressum Seite. <em>Wenn auf eine Datei verlinkt werden soll, kann in der Seitenstruktur eine Seite mit dem Typ "externer Link" erstellt werden, welche auf diese Datei verlinkt.</em>');

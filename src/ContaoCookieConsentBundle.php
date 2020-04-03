@@ -25,12 +25,13 @@ class ContaoCookieConsentBundle extends Bundle
      *
      * @return FrontendTemplate
      */
-    public function createTemplate(array $data, $name = 'mod_cookieconsent')
+    public function createTemplate(array $data, $name = 'mod_cookieconsent1')
     {
         // get default config
         $defaults = $this->getDefaults();
 
         $template = new FrontendTemplate($name);
+        $template->cssFiles = $this->getCssFiles($name);
 
         // Cookie name
         $template->cookie = sprintf('FZ_COOKIECONSENT_%s', $data['id']);
@@ -78,5 +79,21 @@ class ContaoCookieConsentBundle extends Bundle
             'fzCookiesCookieTitle3' => 'Statistik',
             'fzCookiesCookieDescription3' => 'Es werden notwendige Cookies, Google Fonts, Google Maps, OpenStreetMap, Youtube, Social Media Liks und Google Analytics geladen'
         );
+    }
+
+    private function getCssFiles($templateName) {
+      $cssFiles = array(
+        'bundles/contaocookieconsent/css/font.min.css|all',
+        'bundles/contaocookieconsent/css/cookieconsent.min.css|all'
+      );
+      switch ($templateName) {
+        case 'mod_cookieconsent2':
+          $cssFiles[] = 'bundles/contaocookieconsent/css/cookieconsent_template2.min.css|all';
+          break;
+
+        default:
+          break;
+      }
+      return $cssFiles;
     }
 }

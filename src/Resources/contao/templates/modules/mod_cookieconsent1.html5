@@ -1,0 +1,63 @@
+<?php
+foreach($this->cssFiles as $cssFile) {
+    $GLOBALS['TL_CSS'][] = $cssFile . ($this->combineAssets ? '|static' : '');
+}
+
+$GLOBALS['TL_JAVASCRIPT'][] = 'bundles/contaocookieconsent/js/cookieconsent.min.js|static';
+?>
+
+<div id="<?= $this->cookie ?>" class="mod_cookieconsent" data-cookiebar="<?= $this->cookie ?>"<?php if ($this->ttl): ?> data-cookiebar-ttl="<?= $this->ttl ?>"<?php endif; ?>>
+	<div class="privacy_overlay"></div>
+	<div class="privacy_popup">
+		<div class="privacy_inside">
+			<div class="privacy_content">
+				<div class="cookie_settings">
+					<h1 class="cookie_info"><?= $this->text["heading"] ?></h1>
+					<form id="cookie_settings" name="cookie_settings" method="post">
+						<div class="radio_container cookies tab">
+							<div class="palette">
+								<div class="item">
+									<div class="widget widget-radio">
+										<input type="radio" class="radio" name="privacy" id="cookie_consent_1" value="1" checked="">
+										<div class="widget-label">
+											<label for="cookie_consent_1"><?= $this->text["fzCookiesCookieTitle1"] ?>
+                        <span class="info"><?= $this->text["fzCookiesCookieDescription1"] ?></span>
+											</label>
+										</div>
+									</div>
+								</div>
+								<div class="item">
+									<div class="widget widget-radio">
+										<input type="radio" class="radio" name="privacy" id="cookie_consent_2" value="2">
+										<div class="widget-label">
+											<label for="cookie_consent_2"><?= $this->text["fzCookiesCookieTitle2"] ?>
+                        <span class="info"><?= $this->text["fzCookiesCookieDescription2"] ?></span>
+											</label>
+										</div>
+									</div>
+								</div>
+								<div class="item">
+									<div class="widget widget-radio">
+										<input type="radio" class="radio" name="privacy" id="cookie_consent_3" value="3">
+										<div class="widget-label">
+											<label for="cookie_consent_3"><?= $this->text["fzCookiesCookieTitle3"] ?>
+                        <span class="info"><?= $this->text["fzCookiesCookieDescription3"] ?></span>
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="ce_hyperlink">
+							<input type="submit" name="save" class="submit colored" value="Einstellungen speichern &amp; fortfahren">
+						</div>
+					</form>
+					<div class="links">
+						<a href="<?= $this->links["fzCookiesPrivacyPage"] ?>" title="<?= $this->text["fzCookiesPrivacyTitle"] ?>"><?= $this->text["fzCookiesPrivacyTitle"] ?></a>
+            <a href="<?= $this->links["fzCookiesImprintPage"] ?>" title="<?= $this->text["fzCookiesImprintTitle"] ?>"><?= $this->text["fzCookiesImprintTitle"] ?></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

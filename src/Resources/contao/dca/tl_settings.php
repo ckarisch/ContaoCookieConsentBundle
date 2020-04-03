@@ -8,11 +8,22 @@
  * @license LGPL-3.0-or-later
  */
 
+$GLOBALS['TL_DCA']['tl_settings']['fields']['fzCookiesTemplateName'] = array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_settings']['fzCookiesTemplateName'],
+			'inputType'               => 'select',
+			'options'									=> array(
+																				'mod_cookieconsent1' => &$GLOBALS['TL_LANG']['tl_settings']['fzCookiesSelect'][0],
+																				'mod_cookieconsent2' => &$GLOBALS['TL_LANG']['tl_settings']['fzCookiesSelect'][1]
+																	 ),
+			'eval'                    => array('tl_class'=>'w50')
+		);
+
 $GLOBALS['TL_DCA']['tl_settings']['fields']['fzCookiesHeading'] = array
 		(
 			'label'                   => &$GLOBALS['TL_LANG']['tl_settings']['fzCookiesHeading'],
 			'inputType'               => 'text',
-			'eval'                    => array('tl_class'=>'long')
+			'eval'                    => array('tl_class'=>'w50')
 		);
 
 $GLOBALS['TL_DCA']['tl_settings']['fields']['fzCookiesImprintTitle'] = array
@@ -88,4 +99,4 @@ $GLOBALS['TL_DCA']['tl_settings']['fields']['fzCookiesCookieDescription3'] = arr
 /**
  * Modify palette
  */
-$GLOBALS['TL_DCA']['tl_settings']['palettes']['default'] .= ';{fzCookiePopupSettings:hide},fzCookiesHeading,fzCookiesImprintTitle,fzCookiesImprintPage,fzCookiesPrivacyTitle,fzCookiesPrivacyPage,fzCookiesCookieTitle1,fzCookiesCookieDescription1,fzCookiesCookieTitle2,fzCookiesCookieDescription2,fzCookiesCookieTitle3,fzCookiesCookieDescription3';
+$GLOBALS['TL_DCA']['tl_settings']['palettes']['default'] .= ';{fzCookiePopupSettings:hide},fzCookiesTemplateName,fzCookiesHeading,fzCookiesImprintTitle,fzCookiesImprintPage,fzCookiesPrivacyTitle,fzCookiesPrivacyPage,fzCookiesCookieTitle1,fzCookiesCookieDescription1,fzCookiesCookieTitle2,fzCookiesCookieDescription2,fzCookiesCookieTitle3,fzCookiesCookieDescription3';

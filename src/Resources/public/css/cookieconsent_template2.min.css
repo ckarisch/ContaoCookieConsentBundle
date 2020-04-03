@@ -1,0 +1,60 @@
+.mod_cookieconsent #cookie_settings {
+		max-height: 0;
+    overflow: hidden;
+}
+
+.mod_cookieconsent #cookie_settings.closed {
+		max-height: 0;
+    overflow: hidden;
+		animation-name: hide;
+		animation-duration: 1.4s;
+		animation-direction: reverse;
+		animation-fill-mode: forwards;
+		animation-timing-function: ease-in-out;
+}
+
+.mod_cookieconsent #cookie_settings.open {
+		max-height: 500px;
+		animation-name: show;
+		animation-duration: 1.4s;
+		animation-direction: normal;
+		animation-timing-function: ease-in-out;
+}
+
+.mod_cookieconsent #cookie_settings + .toggleSettings {
+		overflow: hidden;
+	}
+
+.mod_cookieconsent #cookie_settings.closed + .toggleSettings {
+		max-height: 500px;
+		animation-name: show;
+		animation-duration: 1.4s;
+		animation-direction: normal;
+		animation-fill-mode: forwards;
+		animation-timing-function: ease-in-out;
+}
+.mod_cookieconsent #cookie_settings.open + .toggleSettings {
+		animation-name: hide;
+		animation-duration: 1.4s;
+		animation-direction: reverse;
+		animation-fill-mode: forwards;
+		animation-timing-function: ease-in-out;
+}
+
+.mod_cookieconsent #cookie_settings + .toggleSettings .info {
+		display: block;
+		margin-bottom: 1rem;
+}
+
+.mod_cookieconsent button.toggleSettings {
+		margin-top: 5px;
+}
+
+@keyframes hide {
+  0%, 50% { max-height: 0px; }
+  100% { max-height: 500px; }
+}
+@keyframes show {
+  0%, 50% { max-height: 0px; }
+  100% { max-height: 500px; }
+}
