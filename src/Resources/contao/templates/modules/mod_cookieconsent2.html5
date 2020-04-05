@@ -58,7 +58,18 @@ $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/contaocookieconsent/js/cookieconsent.min.
             <button class="toggleSettings">zurück</button>
 					</form>
           <div class="toggleSettings">
-            <span class="info"><?= $this->text["fzCookiesCookieDescription3"] ?></span>
+            <span class="info">
+              <?php if(!$this->disableCookieLevel3): ?>
+              <?= $this->text["fzCookiesCookieDescription3"] ?>
+
+              <?php elseif(!$this->disableCookieLevel2): ?>
+              <?= $this->text["fzCookiesCookieDescription2"] ?>
+
+              <?php else: ?>
+              <?= $this->text["fzCookiesCookieDescription1"] ?>
+
+              <?php endif; ?>
+            </span>
             <button class="toggleSettings">Einstellungen ändern</button>
           </div>
           <form name="acceptAllForm" method="post">
