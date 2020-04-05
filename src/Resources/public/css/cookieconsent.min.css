@@ -84,6 +84,11 @@
 	background-repeat: no-repeat;
 }
 
+.mod_cookieconsent .privacy_content .radio_container {
+	max-height: 380px;
+  overflow-y: scroll;
+}
+
 .mod_cookieconsent .palette .item {
 	background: rgb(255,255,255);
 	padding: 10px;
