@@ -11,7 +11,6 @@ define('FZ_COOKIE_CONSENT_VERSION', '1.3.3');
 
 $GLOBALS['TL_HOOKS']['outputFrontendTemplate'][] = ['Formundzeichen\ContaoCookieConsentBundle\EventListener\TemplateListener', 'onOutputFrontendTemplate'];
 $GLOBALS['TL_HOOKS']['getPageLayout'][] = ['Formundzeichen\ContaoCookieConsentBundle\EventListener\GetPageLayoutListener', 'onGetPageLayout'];
-// $GLOBALS['TL_HOOKS']['getUserNavigation'][] = ['formundzeichen_contao-cookie-consent-bundle.user_navigation_listener', 'onGetUserNavigation'];
 
 /**
  * -------------------------------------------------------------------------

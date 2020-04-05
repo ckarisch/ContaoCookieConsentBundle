@@ -6,7 +6,7 @@ foreach($this->cssFiles as $cssFile) {
 $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/contaocookieconsent/js/cookieconsent.min.js|static';
 ?>
 
-<div id="<?= $this->cookie ?>" class="mod_cookieconsent" data-cookiebar="<?= $this->cookie ?>"<?php if ($this->ttl): ?> data-cookiebar-ttl="<?= $this->ttl ?>"<?php endif; ?>>
+<div id="<?= $this->cookie ?>" class="mod_cookieconsent" data-cookiebar="<?= $this->cookie ?>" data-cookiebar-max-value="<?= $this->maxValue ?>"<?php if ($this->ttl): ?> data-cookiebar-ttl="<?= $this->ttl ?>"<?php endif; ?>>
 	<div class="privacy_overlay"></div>
 	<div class="privacy_popup">
 		<div class="privacy_inside">
@@ -26,6 +26,7 @@ $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/contaocookieconsent/js/cookieconsent.min.
 										</div>
 									</div>
 								</div>
+                <?php if(!$this->disableCookieLevel2): ?>
 								<div class="item">
 									<div class="widget widget-radio">
 										<input type="radio" class="radio" name="privacy" id="cookie_consent_2" value="2">
@@ -36,6 +37,8 @@ $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/contaocookieconsent/js/cookieconsent.min.
 										</div>
 									</div>
 								</div>
+                <?php endif; ?>
+                <?php if(!$this->disableCookieLevel3): ?>
 								<div class="item">
 									<div class="widget widget-radio">
 										<input type="radio" class="radio" name="privacy" id="cookie_consent_3" value="3">
@@ -46,6 +49,7 @@ $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/contaocookieconsent/js/cookieconsent.min.
 										</div>
 									</div>
 								</div>
+                <?php endif; ?>
 							</div>
 						</div>
 						<div class="ce_hyperlink">

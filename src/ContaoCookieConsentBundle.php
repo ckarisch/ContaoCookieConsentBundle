@@ -35,6 +35,19 @@ class ContaoCookieConsentBundle extends Bundle
 
         // Cookie name
         $template->cookie = sprintf('FZ_COOKIECONSENT_%s', $data['id']);
+        $template->maxValue = 3;
+        $template->disableCookieLevel2 = $GLOBALS['TL_CONFIG']['fzCookiesDisableCookieLevel2'];
+        $template->disableCookieLevel3 = $GLOBALS['TL_CONFIG']['fzCookiesDisableCookieLevel3'];
+
+        // set max cookie value
+        if($template->disableCookieLevel3) {
+            $template->maxValue = 2;
+
+            if($template->disableCookieLevel2) {
+                $template->maxValue = 1;
+            }
+        }
+
 
         // imprint and privacy pages
         $imprintPage = \PageModel::findWithDetails($GLOBALS['TL_CONFIG']['fzCookiesImprintPage']);
