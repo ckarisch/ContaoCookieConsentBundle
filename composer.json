@@ -33,7 +33,17 @@
     "autoload": {
         "psr-4": {
             "Formundzeichen\\ContaoCookieConsentBundle\\": "src/"
-        }
+        },
+        "classmap": [
+					"src/Resources/contao/"
+    		],
+        "exclude-from-classmap": [
+            "src/Resources/contao/cache/",
+            "src/Resources/contao/config/",
+            "src/Resources/contao/dca/",
+            "src/Resources/contao/languages/",
+            "src/Resources/contao/templates/"
+        ],
     },
     "autoload-dev": {
         "psr-4": {

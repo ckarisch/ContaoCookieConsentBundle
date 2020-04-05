@@ -1,0 +1,17 @@
+<section class="section">
+    <div class="">
+        <p>Hier können alle Templates des Plugins in die Contao Installation kopiert werden.
+          Damit das Plugin ordnungsgemäß funktioniert, müssen die Templates kopiert werden.
+          Bitte jedoch beachten, dass alle Dateien im Ordner /templates überschrieben werden.
+          Damit können Einstellungen, die direkt im Template vorgenommen wurden (z.B. Goole Analytics Tracking ID) verloren gehen. </p>
+        <a onclick="return confirm('Templates werden kopiert, vorhandene Dateien werden überschrieben. Fortfahren?')" href="<?= \Contao\StringUtil::decodeEntities( \Backend::addToUrl('state=copy',true) ); ?>" class="startbutton tl_submit">Templates importieren</a>
+
+        <?php foreach ($this->results as $result): ?>
+        <p><?= $result ?></p>
+        <?php endforeach; ?>
+    </div>
+</section>
+
+<div class="footer">
+<span class="version"><?= $this->version ?></span>
+</div>
