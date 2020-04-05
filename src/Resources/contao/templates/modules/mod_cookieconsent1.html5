@@ -49,7 +49,7 @@ $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/contaocookieconsent/js/cookieconsent.min.
 							</div>
 						</div>
 						<div class="ce_hyperlink">
-							<input type="submit" name="save" class="submit colored" value="Einstellungen speichern &amp; fortfahren">
+							<input type="submit" name="save" class="submit colored" value="speichern &amp; fortfahren">
 						</div>
 					</form>
 					<div class="links">

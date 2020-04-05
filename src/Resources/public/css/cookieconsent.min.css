@@ -60,19 +60,22 @@
 }
 
 .mod_cookieconsent .privacy_inside {
-	position: absolute;
 	left: 0;
 	top: 0;
 	overflow: auto;
 	height: 100%;
 	display: flex;
 	align-items: center;
+	width: 100%;
+	box-sizing: border-box;
 }
 
 .mod_cookieconsent .privacy_content {
 	padding: 2rem 2rem 1.5rem;
 	background: rgb(248,248,248);
 	border-radius: 7px;
+	width: 100%;
+	box-sizing: border-box;
 
 	background-image: url(/bundles/contaocookieconsent/img/cookie.svg);
 	background-size: 50px;
@@ -205,4 +208,56 @@
 
 .hide_cookie_consent .mod_cookieconsent {
 	display: none;
+}
+
+
+
+@media all and (max-width: 425px) {
+	.mod_cookieconsent .privacy_content {
+		background-size: 42px;
+	}
+	.mod_cookieconsent .cookie_info {
+		font-size: 1rem;
+    padding-right: 33px;
+	}
+	.mod_cookieconsent .info {
+		font-size: .8rem;
+	}
+	.mod_cookieconsent input.submit, .mod_cookieconsent button {
+		font-size: .8rem;
+	}
+	.mod_cookieconsent form label, .mod_cookieconsent form input.radio {
+		padding-right: 5px;
+	}
+}
+
+
+@media all and (max-width: 375px) {
+	.mod_cookieconsent .privacy_content {
+		background-size: 40px;
+		background-position: calc(100% - .5rem) .5rem;
+		padding: 1rem 1rem .5rem;
+	}
+	.mod_cookieconsent .cookie_info {
+		font-size: .9rem;
+    padding-right: 32px;
+	}
+	.mod_cookieconsent .info {
+		font-size: .8rem;
+	}
+	.mod_cookieconsent input.submit, .mod_cookieconsent button {
+		font-size: .7rem;
+	}
+	.mod_cookieconsent .palette .info {
+		font-size: .7rem;
+	}
+	.mod_cookieconsent form label, .mod_cookieconsent form input.radio {
+		padding-right: 0px;
+	}
+	.mod_cookieconsent .links {
+		padding: .5rem 0 0;
+	}
+	.mod_cookieconsent .submit {
+		margin-top: 5px;
+	}
 }
