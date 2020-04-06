@@ -43,7 +43,7 @@
 
 .mod_cookieconsent #cookie_settings + .toggleSettings .info {
 		display: block;
-		margin-bottom: 1rem;
+		margin-bottom: 16px;
 }
 
 .mod_cookieconsent button.toggleSettings {
