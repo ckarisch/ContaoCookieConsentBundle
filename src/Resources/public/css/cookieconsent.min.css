@@ -1,10 +1,14 @@
-.mod_cookieconsent input {
+.mod_cookieconsent input, .mod_cookieconsent button {
 	margin: 0;
 }
 
 .mod_cookieconsent input.submit[type="submit"].colored,
 .mod_cookieconsent button.submit[type="submit"].colored {
 	background: #519249;
+}
+.mod_cookieconsent input.submit[type="submit"].colored:hover,
+.mod_cookieconsent button.submit[type="submit"].colored:hover {
+	background: #559f4c;
 }
 
 .mod_cookieconsent input.submit, .mod_cookieconsent button {
@@ -26,6 +30,12 @@
   -webkit-appearance: none;
   font-family: Montserrat,sans-serif;
   letter-spacing: .07em;
+	line-height: 1;
+}
+
+.mod_cookieconsent input.submit:hover, .mod_cookieconsent button:hover {
+	background: rgb(160,160,160);
+	border: none;
 }
 
 .mod_cookieconsent {
@@ -91,7 +101,7 @@
 
 .mod_cookieconsent .privacy_content .radio_container {
 	max-height: 380px;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .mod_cookieconsent .palette .item {
