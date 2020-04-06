@@ -1,3 +1,7 @@
+.mod_cookieconsent input {
+	margin: 0;
+}
+
 .mod_cookieconsent input.submit[type="submit"].colored,
 .mod_cookieconsent button.submit[type="submit"].colored {
 	background: #519249;
@@ -27,6 +31,7 @@
 .mod_cookieconsent {
 	display: none;
 	font-family: Montserrat,sans-serif;
+	font-size: 16px;
 }
 
 .mod_cookieconsent.open {
