@@ -7,7 +7,7 @@
  * @license LGPL-3.0-or-later
  */
 
-define('FZ_COOKIE_CONSENT_VERSION', '1.3.3');
+define('FZ_COOKIE_CONSENT_VERSION', '1.3.4');
 
 $GLOBALS['TL_HOOKS']['outputFrontendTemplate'][] = ['Formundzeichen\ContaoCookieConsentBundle\EventListener\TemplateListener', 'onOutputFrontendTemplate'];
 $GLOBALS['TL_HOOKS']['getPageLayout'][] = ['Formundzeichen\ContaoCookieConsentBundle\EventListener\GetPageLayoutListener', 'onGetPageLayout'];
