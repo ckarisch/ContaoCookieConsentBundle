@@ -16,7 +16,8 @@
     },
     "conflict": {
         "contao/core": "*",
-        "contao/manager-plugin": "<2.0 || >=3.0"
+        "contao/manager-plugin": "<2.0 || >=3.0",
+        "codefog/contao-cookiebar": "*"
     },
     "require-dev": {
         "contao/manager-plugin": "^2.0",
