@@ -1,0 +1,24 @@
+.fzCookieConsentMessage {
+  padding: 10px 0;
+  margin: 10px 0;
+}
+
+.fzCookieConsentMessage:nth-child(n+2) {
+  border-top: 1px solid #e6e6e8;
+}
+
+.fzCookieConsentMessage .tl_error {
+  background-position: left center !important;
+}
+
+.fzCookieConsentMessage ul {
+  padding-left: 21px;
+}
+
+.fzCookieConsentMessageContent {
+  padding-left: 20px;
+}
+
+.fzCookieConsentMessageFooter {
+  padding-top: 0;
+}
