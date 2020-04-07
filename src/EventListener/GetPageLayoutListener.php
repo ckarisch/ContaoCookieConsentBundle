@@ -29,18 +29,20 @@ class GetPageLayoutListener implements ServiceAnnotationInterface
         {
             $imprintPage = \PageModel::findWithDetails($GLOBALS['TL_CONFIG']['fzCookiesImprintPage']);
             if($imprintPage->id == $pageModel->id)
+            {
                 $pageModel->cssClass = trim($pageModel->cssClass . ' ' . $hideClass);
-
-            return;
+                return;
+            }
         }
 
         if(!$GLOBALS['TL_CONFIG']['fzCookiesEnableOnPrivacyPage'])
         {
             $privacyPage = \PageModel::findWithDetails($GLOBALS['TL_CONFIG']['fzCookiesPrivacyPage']);
             if($privacyPage->id == $pageModel->id)
+            {
                 $pageModel->cssClass = trim($pageModel->cssClass . ' ' . $hideClass);
-
-            return;
+                return;
+            }
         }
     }
 }
