@@ -85,11 +85,11 @@ class ContaoCookieConsentBundle extends Bundle
             'fzCookiesImprintPage' => 'impressum.html',
             'fzCookiesPrivacyTitle' => 'Datenschutz',
             'fzCookiesPrivacyPage' => 'datenschutz.html',
-            'fzCookiesCookieTitle1' => 'Erforderlich',
+            'fzCookiesCookieTitle1' => 'Notwendig',
             'fzCookiesCookieDescription1' => 'Notwendige Cookies und Google Fonts zulassen, damit die Website korrekt funktioniert',
-            'fzCookiesCookieTitle2' => 'Komfort',
+            'fzCookiesCookieTitle2' => 'Erweitert',
             'fzCookiesCookieDescription2' => 'Es werden notwendige Cookies, Google Fonts, Google Maps, OpenStreetMap, Youtube und Social Media Liks geladen',
-            'fzCookiesCookieTitle3' => 'Statistik',
+            'fzCookiesCookieTitle3' => 'Analyse',
             'fzCookiesCookieDescription3' => 'Es werden notwendige Cookies, Google Fonts, Google Maps, OpenStreetMap, Youtube, Social Media Liks und Google Analytics geladen'
         );
     }
