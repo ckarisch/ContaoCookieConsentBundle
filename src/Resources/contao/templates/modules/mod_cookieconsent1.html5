@@ -18,9 +18,11 @@ $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/contaocookieconsent/js/cookieconsent.min.
 							<div class="palette">
 								<div class="item">
 									<div class="widget widget-radio">
-										<input type="radio" class="radio" name="privacy" id="cookie_consent_1" value="1" checked="">
 										<div class="widget-label">
-											<label for="cookie_consent_1"><?= $this->text["fzCookiesCookieTitle1"] ?>
+											<label for="cookie_consent_1">
+    										<input type="radio" class="radio" name="privacy" id="cookie_consent_1" value="1" checked="">
+                        <span class="checkmark"></span>
+                        <strong><?= $this->text["fzCookiesCookieTitle1"] ?></strong>
                         <span class="info"><?= $this->text["fzCookiesCookieDescription1"] ?></span>
 											</label>
 										</div>
@@ -29,9 +31,11 @@ $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/contaocookieconsent/js/cookieconsent.min.
                 <?php if(!$this->disableCookieLevel2): ?>
 								<div class="item">
 									<div class="widget widget-radio">
-										<input type="radio" class="radio" name="privacy" id="cookie_consent_2" value="2">
 										<div class="widget-label">
-											<label for="cookie_consent_2"><?= $this->text["fzCookiesCookieTitle2"] ?>
+											<label for="cookie_consent_2">
+    										<input type="radio" class="radio" name="privacy" id="cookie_consent_2" value="2">
+                        <span class="checkmark"></span>
+                        <strong><?= $this->text["fzCookiesCookieTitle2"] ?></strong>
                         <span class="info"><?= $this->text["fzCookiesCookieDescription2"] ?></span>
 											</label>
 										</div>
@@ -41,9 +45,11 @@ $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/contaocookieconsent/js/cookieconsent.min.
                 <?php if(!$this->disableCookieLevel3): ?>
 								<div class="item">
 									<div class="widget widget-radio">
-										<input type="radio" class="radio" name="privacy" id="cookie_consent_3" value="3">
 										<div class="widget-label">
-											<label for="cookie_consent_3"><?= $this->text["fzCookiesCookieTitle3"] ?>
+											<label for="cookie_consent_3">
+    										<input type="radio" class="radio" name="privacy" id="cookie_consent_3" value="3">
+                        <span class="checkmark"></span>
+                        <strong><?= $this->text["fzCookiesCookieTitle3"] ?></strong>
                         <span class="info"><?= $this->text["fzCookiesCookieDescription3"] ?></span>
 											</label>
 										</div>
