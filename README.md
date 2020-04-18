@@ -1,11 +1,17 @@
 # Contao 4 cookie consent bundle
 
+Responsive Cookie Plugin für Contao.
+Dieses Plugin ermöglicht es dem Besucher zwischen verschiedenen Datenschutzeinstellungen zu wählen.
+Google Analytics wird nur geladen, wenn der Besucher Statistiken erlaubt.
+OnePage Support - die Website muss nicht neu geladen werden, nachdem die Datenschutzeinstellungen gespeichert wurden. 
+Beschreibung und Installationsanleitung: https://www.formundzeichen.at/plugin/contao-cookie-popup.html
+
 Responsive cookie consent plugin for Contao.
 The plugin provides different privacy settings for the visitor.
 Google Analytics is only loaded when the visitor agrees to enable statistics.
 The plugin supports OnePages - no need to reload page after setting privacy settings. 
 
-## System Requirements
+## System Requirements 
 - PHP >= 5.6 / >= 7.0
 - contao/core-bundle >= 4.8
 
