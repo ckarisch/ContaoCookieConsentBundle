@@ -30,11 +30,17 @@ class ContaoBackendMessages extends \Backend
 
         $messages = array();
 
-
         $templateErrors = $this->checkTemplates();
         if(!empty($templateErrors))
         {
             $messages[] = (object) array(
+              'heading' => 'Contao Cookie Consent',
+              'content' => 'Das Plugin ist nicht vollständig eingerichtet.',
+              'footer' => '<a class="tl_submit" target="_blank" rel="noopener" href="https://www.formundzeichen.at/plugin/contao-cookie-popup.html">Installationsanleitung</a>'
+            );
+
+            $messages[] = (object) array(
+              'error' => true,
               'heading' => 'Template Fehler',
               'content' => 'Die folgenden Templates wurden nicht gefunden. Dieser Fehler kann durch den Import der Standardtemplates behoben werden.',
               'list' => $templateErrors,

@@ -1,14 +1,14 @@
 <?php foreach ($this->messages as $message): ?>
     <div class="fzCookieConsentMessage">
-        <h3 class="tl_error"><?= $message->heading ?></h3>
+        <h3 class="<?= $message->error ? 'tl_error' : 'tl_info'?>"><?= $message->heading ?></h3>
 
         <div class="fzCookieConsentMessageContent">
             <div><b><?= $message->content ?></b></div>
 
             <ul>
-            <?php foreach ($message->list as $listItem): ?>
+            <?php if($message->list): foreach ($message->list as $listItem): ?>
                 <li><p><?= $listItem ?></p></li>
-            <?php endforeach; ?>
+            <?php endforeach; endif;?>
             </ul>
 
 
