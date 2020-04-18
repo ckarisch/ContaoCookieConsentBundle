@@ -2,7 +2,15 @@
     "name": "formundzeichen/contao-cookie-consent-bundle",
     "type": "contao-bundle",
     "description": "Responsive cookie consent plugin for Contao. The plugin provides different privacy settings for the visitor. Google Analytics is only loaded when the visitor agrees to enable statistics. The plugin supports OnePages - no need to reload page after setting privacy settings. Installation instructions: https://github.com/ckarisch/ContaoCookieConsentBundle",
-    "homepage": "https://www.formundzeichen.at",
+    "keywords": [
+  		"contao",
+  		"cookie",
+      "cookieconsent",
+  		"opt-in",
+  		"cookiebar",
+  		"cookie popup"
+  	],
+    "homepage": "https://www.formundzeichen.at/plugin/contao-cookie-popup.html",
     "license": "LGPL-3.0-or-later",
     "authors": [
         {
