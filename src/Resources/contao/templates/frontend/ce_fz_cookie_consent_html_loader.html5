@@ -1,0 +1,47 @@
+<?php
+// check if content exists
+if(isset($this->licenseActive)):
+?>
+
+<div class="fz_cookie_consent_html_loader">
+    <?php
+
+    $rand = bin2hex(random_bytes(8));
+
+    $this->html = str_replace('&lt;', '<', $this->html);
+
+    preg_match_all('/\<script>(.|\s)*?\<\/script\>/i', $this->html, $scripts);
+    preg_match_all('/\<style>(.|\s)*?\<\/style\>/i', $this->html, $styles);
+
+    $this->html = str_replace('</script>', '<\/script>', $this->html);
+    $this->html = str_replace('`', '\`', $this->html);
+    ?>
+
+    <script>
+        addScripts = function(scripts, isStyle) {
+            let tag = 'script';
+            if (isStyle) {
+                tag = 'style';
+            }
+            for (let i = 0; i < scripts.length; i++) {
+                if(Array.isArray(scripts[i])) {
+                    addScripts(scripts[i], isStyle);
+                    return;
+                }
+                if(scripts[i].length > (tag.length * 2 + 5))
+                var script = document.createElement(tag);
+                const regex = new RegExp(`\<\/?${tag}\>`, 'ig');
+                script.textContent = (scripts[i]).replace(regex, '');
+                document.body.appendChild(script);
+            }
+        }
+        const scripts<?= $rand ?> = <?= json_encode($scripts) ?>;
+        const styles<?= $rand ?> = <?= json_encode($styles) ?>;
+        const content<?= $rand ?> = `<?= $this->html ?>`;
+    </script>
+    <div class="load_html"><button onclick="this.parentElement.insertAdjacentHTML('beforebegin', content<?= $rand ?>); addScripts(scripts<?= $rand ?>, false); addScripts(styles<?= $rand ?>, true); this.parentElement.remove(); return false;">Inhalt laden</button></div>
+</div>
+<?php
+// check if content exists
+endif;
+?>

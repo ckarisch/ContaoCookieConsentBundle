@@ -7,3 +7,12 @@ services:
         Symfony\Component\DependencyInjection\ContainerAwareInterface:
             calls:
                 - ["setContainer", ["@service_container"]]
+
+
+    Formundzeichen\ContaoCookieConsentBundle\Controller\ContentElement\FzCookieConsentHtmlController:
+        tags:
+            -
+                name: contao.content_element
+                category: Cookie Consent
+                renderer: esi
+                type: fz_cookie_consent_html_loader

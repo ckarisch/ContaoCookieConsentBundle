@@ -5,7 +5,6 @@
  *
  * (c) Christof Karisch
  *
- * @license LGPL-3.0-or-later
  */
 
 namespace Formundzeichen\ContaoCookieConsentBundle;
@@ -48,6 +47,17 @@ class ContaoBackendMessages extends \Backend
             );
         }
 
+        $licenseInfo = $this->checkLicense();
+        if(isset($licenseInfo))
+        {
+            $messages[] = (object) array(
+              'error' => false,
+              'heading' => $licenseInfo['heading'],
+              'content' => $licenseInfo['content'],
+              'footer' => ''
+            );
+        }
+
         $template->messages = $messages;
 
         return $template->parse();
@@ -74,6 +84,21 @@ class ContaoBackendMessages extends \Backend
 				}
 
         return $errors;
+    }
+
+    private function checkLicense() {
+        $licenseLevel = \Config::get('fzCookiesLicenseLevel');
+        if ($licenseLevel >= 2)
+        {
+            return array(
+                'heading' => 'Cookie Popup Premium',
+                'content' => 'Premium Lizenz ist aktiv. Alle Funktionen sind aktiviert.'
+            );
+        }
+        return array(
+            'heading' => 'Cookie Popup Standard',
+            'content' => 'Standard Lizenz ist aktiv. Diese Lizenz kann kostenlos auf beliebig vielen Domains verwendet werden. <br />Weitere Informationen finden Sie in der <a href="https://www.formundzeichen.at/plugin/contao-cookie-popup.html">Cookie Popup Anleitung</a>'
+        );
     }
 
 }

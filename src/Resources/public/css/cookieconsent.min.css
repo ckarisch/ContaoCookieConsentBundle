@@ -386,3 +386,17 @@
 		margin-top: 5px;
 	}
 }
+
+.fz_cookie_consent_html_loader button {
+	cursor: pointer;
+}
+
+.fz_cookie_consent_html_loader .load_html{
+	width: 100%;
+	min-height: 200px;
+	background: #eee;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 1rem 0;
+}

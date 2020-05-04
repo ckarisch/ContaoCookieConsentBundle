@@ -5,7 +5,6 @@
  *
  * (c) Christof Karisch
  *
- * @license LGPL-3.0-or-later
  */
 
 namespace Formundzeichen\ContaoCookieConsentBundle\ContaoManager;
