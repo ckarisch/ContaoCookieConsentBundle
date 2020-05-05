@@ -26,6 +26,22 @@ class FzCookieConsentHtmlController extends AbstractContentElementController
             $template->licenseActive = true;
             $template->html = $model->html;
             $template->cookieLevel = $model->fz_cookie_consent_cookie_level;
+
+
+            switch ($model->fz_cookie_consent_cookie_level) {
+                case 1:
+                    $template->cookieName = \Config::get('fzCookiesCookieTitle1');
+                    break;
+                case 2:
+                    $template->cookieName = \Config::get('fzCookiesCookieTitle2');
+                    break;
+                case 3:
+                    $template->cookieName = \Config::get('fzCookiesCookieTitle3');
+                    break;
+                default:
+                    $template->cookieName = \Config::get('fzCookiesCookieTitle3');
+            }
+
             return $template->getResponse();
         }
         else {

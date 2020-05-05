@@ -29,7 +29,6 @@ for (let level = 3; level <= 3; level ++)
 
 jQuery(document).on('user_privacy_changed',function(event,params)
 {
-	console.log("event with params: " + params);
 	if(params.level >= 3)
 	{
 		initGoogleAnalytics();

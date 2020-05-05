@@ -44,15 +44,46 @@ if(isset($this->licenseActive)):
         const scripts<?= $rand ?> = <?= json_encode($scripts) ?>;
         const styles<?= $rand ?> = <?= json_encode($styles) ?>;
         const content<?= $rand ?> = `<?= $this->html ?>`;
+        let inserted<?= $rand ?> = false;
+
+        const show<?= $rand ?> = () => {
+            if(!inserted<?= $rand ?>) {
+                document.getElementById('fz_cookie_consent_html_loader<?= $rand ?>').insertAdjacentHTML('beforebegin', content<?= $rand ?>);
+                addScripts(scripts<?= $rand ?>, false); addScripts(styles<?= $rand ?>, true);
+
+                const loadArea = document.querySelector('#fz_cookie_consent_html_loader<?= $rand ?> .load_html');
+                if(loadArea)
+                    loadArea.remove();
+                inserted<?= $rand ?> = true;
+            }
+        }
 
         if(cookieLevel<?= $rand ?> >= <?= $this->cookieLevel ?>)
         {
-            document.getElementById('fz_cookie_consent_html_loader<?= $rand ?>').insertAdjacentHTML('beforebegin', content<?= $rand ?>);
-            addScripts(scripts<?= $rand ?>, false); addScripts(styles<?= $rand ?>, true);
+            show<?= $rand ?>();
         }
         else {
-            document.getElementById('fz_cookie_consent_html_loader<?= $rand ?>').insertAdjacentHTML('beforeend', `<div class="load_html"><button onclick="this.parentElement.insertAdjacentHTML('beforebegin', content<?= $rand ?>); addScripts(scripts<?= $rand ?>, false); addScripts(styles<?= $rand ?>, true); this.parentElement.remove(); return false;">Inhalt laden</button></div>`);
+            document.getElementById('fz_cookie_consent_html_loader<?= $rand ?>').insertAdjacentHTML('beforeend', `
+            <div class="load_html">
+                <button onclick="show<?= $rand ?>(); this.parentElement.remove(); return false;">
+                    Inhalt laden
+                </button>
+                <button onclick="this.parentElement.remove(); setCookie(document.querySelector('.mod_cookieconsent'), cookieName, <?= $this->cookieLevel ?>); return false;">
+                    Inhalt laden und Cookie-Kategorie "<?= $this->cookieName ?>" akzeptieren.
+                </button>
+                <a href="#cookieSettings">
+                    Cookie Einstellungen öffnen
+                </a>
+            </div>`);
         }
+
+        jQuery(document).on('user_privacy_changed',function(event,params)
+        {
+            if(params.level >= <?= $this->cookieLevel ?>)
+        	{
+                show<?= $rand ?>();
+            }
+        });
 
     </script>
 
