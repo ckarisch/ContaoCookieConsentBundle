@@ -25,6 +25,7 @@ class FzCookieConsentHtmlController extends AbstractContentElementController
         if($licenseLevel >=2 ) {
             $template->licenseActive = true;
             $template->html = $model->html;
+            $template->cookieLevel = $model->fz_cookie_consent_cookie_level;
             return $template->getResponse();
         }
         else {

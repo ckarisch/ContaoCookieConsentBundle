@@ -1,13 +1,12 @@
 <?php
 // check if content exists
 if(isset($this->licenseActive)):
-?>
-
-<div class="fz_cookie_consent_html_loader">
-    <?php
 
     $rand = bin2hex(random_bytes(8));
+?>
 
+<div class="fz_cookie_consent_html_loader" id="fz_cookie_consent_html_loader<?= $rand ?>">
+    <?php
     $this->html = str_replace('&lt;', '<', $this->html);
 
     preg_match_all('/\<script>(.|\s)*?\<\/script\>/i', $this->html, $scripts);
@@ -18,6 +17,13 @@ if(isset($this->licenseActive)):
     ?>
 
     <script>
+        // var cookieName = 'FZ_COOKIECONSENT';
+        let cookieLevel<?= $rand ?> = 0;
+        for(let i = 1; i <= 3; i++) { // all possible cookies
+            if (window.localStorage.getItem(cookieName + '_' + i) && window.localStorage.getItem(cookieName + '_' + i) > Math.round(Date.now() / 1000)) {
+                cookieLevel<?= $rand ?> = i;
+            }
+        }
         addScripts = function(scripts, isStyle) {
             let tag = 'script';
             if (isStyle) {
@@ -38,8 +44,19 @@ if(isset($this->licenseActive)):
         const scripts<?= $rand ?> = <?= json_encode($scripts) ?>;
         const styles<?= $rand ?> = <?= json_encode($styles) ?>;
         const content<?= $rand ?> = `<?= $this->html ?>`;
+
+        if(cookieLevel<?= $rand ?> >= <?= $this->cookieLevel ?>)
+        {
+            document.getElementById('fz_cookie_consent_html_loader<?= $rand ?>').insertAdjacentHTML('beforebegin', content<?= $rand ?>);
+            addScripts(scripts<?= $rand ?>, false); addScripts(styles<?= $rand ?>, true);
+        }
+        else {
+            document.getElementById('fz_cookie_consent_html_loader<?= $rand ?>').insertAdjacentHTML('beforeend', `<div class="load_html"><button onclick="this.parentElement.insertAdjacentHTML('beforebegin', content<?= $rand ?>); addScripts(scripts<?= $rand ?>, false); addScripts(styles<?= $rand ?>, true); this.parentElement.remove(); return false;">Inhalt laden</button></div>`);
+        }
+
     </script>
-    <div class="load_html"><button onclick="this.parentElement.insertAdjacentHTML('beforebegin', content<?= $rand ?>); addScripts(scripts<?= $rand ?>, false); addScripts(styles<?= $rand ?>, true); this.parentElement.remove(); return false;">Inhalt laden</button></div>
+
+
 </div>
 <?php
 // check if content exists
