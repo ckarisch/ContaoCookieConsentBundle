@@ -87,7 +87,42 @@ class ContaoBackendMessages extends \Backend
     }
 
     private function checkLicense() {
+        $license = \Config::get('fzCookiesLicense');
         $licenseLevel = \Config::get('fzCookiesLicenseLevel');
+        $nextCheck = \Config::get('fzCookiesNextLicenseCheck');
+
+        $domain = $_SERVER['SERVER_NAME'];
+
+        if(!isset($nextCheck)) {
+            $nextCheck = 0;
+        }
+
+        if($nextCheck < time())
+        {
+            $url = 'https://shop.formundzeichen.at/api/getKey';
+
+            $opts = array('http' =>
+                array(
+                    'method'  => 'POST',
+                    'content' => http_build_query(array('domain' => $domain, 'app' => 'fz-contao-cookie-consent-bundle'))
+                )
+            );
+
+            $data = $this->callAPI('POST', $url, json_encode(array('domain' => $domain, 'app' => 'fz-contao-cookie-consent-bundle'), JSON_FORCE_OBJECT));
+
+            if($data) {
+                $json = json_decode($data, true);
+
+                $license = $json['key'];
+                $licenseLevel = $json['licenseLevel'];
+                if($license)
+        		      \Config::persist('fzCookiesLicense', $license);
+
+        		\Config::persist('fzCookiesLicenseLevel', $licenseLevel);
+                \Config::persist('fzCookiesNextLicenseCheck', time() + (3600));
+            }
+        }
+
         if ($licenseLevel >= 2)
         {
             return array(
@@ -99,6 +134,37 @@ class ContaoBackendMessages extends \Backend
             'heading' => 'Cookie Popup Standard',
             'content' => 'Standard Lizenz ist aktiv. Diese Lizenz kann kostenlos auf beliebig vielen Domains verwendet werden. <br />Weitere Informationen finden Sie in der <a href="https://www.formundzeichen.at/plugin/contao-cookie-popup.html">Cookie Popup Anleitung</a>'
         );
+    }
+
+    private function callAPI($method, $url, $data){
+       $curl = curl_init();
+       switch ($method){
+          case "POST":
+             curl_setopt($curl, CURLOPT_POST, 1);
+             if ($data)
+                curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+             break;
+          case "PUT":
+             curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "PUT");
+             if ($data)
+                curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+             break;
+          default:
+             if ($data)
+                $url = sprintf("%s?%s", $url, http_build_query($data));
+       }
+       // OPTIONS:
+       curl_setopt($curl, CURLOPT_URL, $url);
+       curl_setopt($curl, CURLOPT_HTTPHEADER, array(
+          'Content-Type: application/json',
+       ));
+       curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+       curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+       // EXECUTE:
+       $result = curl_exec($curl);
+       if(!$result){ return false; }
+       curl_close($curl);
+       return $result;
     }
 
 }
