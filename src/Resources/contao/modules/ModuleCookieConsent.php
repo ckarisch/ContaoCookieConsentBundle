@@ -11,6 +11,7 @@ namespace Formundzeichen\ContaoCookieConsentBundle;
 
 use Contao\System;
 use Contao\Backend;
+use ContaoBackendMessages;
 
 /**
  * Class ModuleCookieConsent
@@ -34,10 +35,26 @@ class ModuleCookieConsent extends \BackendModule
      */
     protected function compile()
     {
+        $license = \Config::get('fzCookiesLicense');
+        $licenseLevel = \Config::get('fzCookiesLicenseLevel');
+
+        switch ($licenseLevel) {
+            case 1:
+                $licenseName = 'Standard Lizenz';
+                break;
+            case 2:
+                $licenseName = 'Premium Lizenz';
+                break;
+            default:
+                $licenseName = 'Standard Lizenz';
+                break;
+            }
+        $this->Template->licenseName = $licenseName;
+        $this->Template->license = $license . " _ how";
         $this->Template->results = array();
 
-    		$objSession = System::getContainer()->get('session');
-    		$arrSession = $objSession->get($this->strSession);
+		$objSession = System::getContainer()->get('session');
+		$arrSession = $objSession->get($this->strSession);
 
         switch( \Input::get('state') ) {
             case 'copy':
@@ -46,7 +63,7 @@ class ModuleCookieConsent extends \BackendModule
       					$objSession->set($this->strSession,$arrSession);
 
                 $this->redirect( Backend::addToUrl('state=copying-done') );
-          			return;
+          		return;
 
             case 'copying-done':
                 // do not clear session
@@ -55,6 +72,20 @@ class ModuleCookieConsent extends \BackendModule
                 if($arrSession['results']) {
                   $this->Template->results = $arrSession['results'];
                 }
+                break;
+
+            case 'set-key':
+                $key = \Input::post('licenseKey');
+                \Config::persist('fzCookiesLicense', $key);
+
+                $bm = new \Formundzeichen\ContaoCookieConsentBundle\ContaoBackendMessages();
+                $bm->checkLicense($key, false);
+
+                $this->redirect( Backend::addToUrl('state=set-key-done') );
+                return;
+
+            case 'set-key-done':
+                $this->Template->setKeyMessage = 'Key gespeichert';
                 break;
 
             default:

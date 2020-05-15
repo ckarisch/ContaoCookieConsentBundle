@@ -86,10 +86,17 @@ class ContaoBackendMessages extends \Backend
         return $errors;
     }
 
-    private function checkLicense() {
+    public function checkLicense($key = '', $checkTime = true) {
         $license = \Config::get('fzCookiesLicense');
         $licenseLevel = \Config::get('fzCookiesLicenseLevel');
         $nextCheck = \Config::get('fzCookiesNextLicenseCheck');
+
+        if(isset($key)) {
+            $api = 'checkKey';
+        }
+        else {
+            $api = 'getKey';
+        }
 
         $domain = $_SERVER['SERVER_NAME'];
 
@@ -97,28 +104,33 @@ class ContaoBackendMessages extends \Backend
             $nextCheck = 0;
         }
 
-        if($nextCheck < time())
+        if(!$checkTime || $nextCheck < time())
         {
-            $url = 'https://shop.formundzeichen.at/api/getKey';
+            $url = 'https://shop.formundzeichen.at/api/' . $api;
 
-            $opts = array('http' =>
-                array(
-                    'method'  => 'POST',
-                    'content' => http_build_query(array('domain' => $domain, 'app' => 'fz-contao-cookie-consent-bundle'))
-                )
-            );
-
-            $data = $this->callAPI('POST', $url, json_encode(array('domain' => $domain, 'app' => 'fz-contao-cookie-consent-bundle'), JSON_FORCE_OBJECT));
+            $data = $this->callAPI('POST', $url, json_encode(array(
+                'domain' => $domain,
+                'app' => 'fz-contao-cookie-consent-bundle',
+                'key' => isset($key) ? $key : ''
+            ), JSON_FORCE_OBJECT));
 
             if($data) {
                 $json = json_decode($data, true);
 
                 $license = $json['key'];
                 $licenseLevel = $json['licenseLevel'];
-                if($license)
-        		      \Config::persist('fzCookiesLicense', $license);
+                $keyValid = $json['keyValid'];
 
-        		\Config::persist('fzCookiesLicenseLevel', $licenseLevel);
+                if(!$keyValid) {
+                    \Config::persist('fzCookiesLicenseLevel', 1);
+                }
+                else {
+                    if($license) {
+            		      \Config::persist('fzCookiesLicense', $license);
+                      }
+
+              		\Config::persist('fzCookiesLicenseLevel', $licenseLevel);
+                }
                 \Config::persist('fzCookiesNextLicenseCheck', time() + (3600));
             }
         }

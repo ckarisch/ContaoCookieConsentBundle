@@ -1,10 +1,32 @@
 <section class="section">
-    <div class="">
+    <div>
+        <h1>Template Import</h1>
         <p>Hier können alle Templates des Plugins in die Contao Installation kopiert werden.
           Damit das Plugin ordnungsgemäß funktioniert, müssen die Templates kopiert werden.
           Bitte jedoch beachten, dass alle Dateien im Ordner /templates überschrieben werden.
           Damit können Einstellungen, die direkt im Template vorgenommen wurden (z.B. Goole Analytics Tracking ID) verloren gehen. </p>
         <a onclick="return confirm('Templates werden kopiert, vorhandene Dateien werden überschrieben. Fortfahren?')" href="<?= \Contao\StringUtil::decodeEntities( \Backend::addToUrl('state=copy',true) ); ?>" class="startbutton tl_submit">Templates importieren</a>
+
+        <?php foreach ($this->results as $result): ?>
+        <p><?= $result ?></p>
+        <?php endforeach; ?>
+    </div>
+</section>
+<section class="section">
+    <div>
+        <h1>Produkt Key</h1>
+        <p>Um premium Funktionen nutzen zu können, ist ein Produkt Key erforderlich.
+            Der Produkt Key kann auf unserem <a href="https://shop.formundzeichen.at" target="_blank"><strong>Web Shop</strong></a> erworben werden.
+            Die Standardfunktionalität inklusive Google Analytics ist gratis. Die Standard Lizenz kann sowohl privat als auch kommerziell verwendet werden.
+            <br /><br />
+            Aktuelle Lizenz: <strong><?= $this->licenseName ?></strong>
+        </p>
+        <form action="<?= \Contao\StringUtil::decodeEntities( \Backend::addToUrl('state=set-key',true) ); ?>" method="post">
+            <input type="text" name="licenseKey" placeholder="Produkt Key"/>
+            <input type="submit" value="Speichern" />
+            <input type="hidden" name="REQUEST_TOKEN" value="<?= REQUEST_TOKEN ?>">
+        </form>
+        <?= $this->setKeyMessage ? $this->setKeyMessage : '' ?>
 
         <?php foreach ($this->results as $result): ?>
         <p><?= $result ?></p>
