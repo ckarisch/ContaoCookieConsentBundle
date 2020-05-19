@@ -79,17 +79,17 @@ class ContaoCookieConsentBundle extends Bundle
 
     private function getDefaults() {
         return array(
-            'fzCookiesHeading' => 'Bitte treffen Sie eine Auswahl um fortzufahren',
+            'fzCookiesHeading' => 'Wählen Sie Ihre Datenschutzeinstellungen',
             'fzCookiesImprintTitle' => 'Impressum',
             'fzCookiesImprintPage' => 'impressum.html',
             'fzCookiesPrivacyTitle' => 'Datenschutz',
             'fzCookiesPrivacyPage' => 'datenschutz.html',
             'fzCookiesCookieTitle1' => 'Notwendig',
-            'fzCookiesCookieDescription1' => 'Notwendige Cookies und Google Fonts zulassen, damit die Website korrekt funktioniert',
+            'fzCookiesCookieDescription1' => 'Mit dieser Einstellung wird zur korrekten Darstellung der Website Google Fonts geladen.',
             'fzCookiesCookieTitle2' => 'Erweitert',
-            'fzCookiesCookieDescription2' => 'Es werden notwendige Cookies, Google Fonts, Google Maps, OpenStreetMap, Youtube und Social Media Liks geladen',
+            'fzCookiesCookieDescription2' => 'Mit dieser Einstellung werden notwendige Cookies und Cookies für erweiterte Funktionen geladen und zugelassen.',
             'fzCookiesCookieTitle3' => 'Analyse',
-            'fzCookiesCookieDescription3' => 'Es werden notwendige Cookies, Google Fonts, Google Maps, OpenStreetMap, Youtube, Social Media Liks und Google Analytics geladen'
+            'fzCookiesCookieDescription3' => 'Mit dieser Einstellung werden Google Fonts, Cookies für erweiterte Funktionen, sowie Google Analytics geladen und zugelassen.'
         );
     }
 
