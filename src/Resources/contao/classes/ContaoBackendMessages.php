@@ -47,16 +47,16 @@ class ContaoBackendMessages extends \Backend
             );
         }
 
-        $licenseInfo = $this->checkLicense();
-        if(isset($licenseInfo))
-        {
-            $messages[] = (object) array(
-              'error' => false,
-              'heading' => $licenseInfo['heading'],
-              'content' => $licenseInfo['content'],
-              'footer' => ''
-            );
-        }
+        // $licenseInfo = $this->checkLicense();
+        // if(isset($licenseInfo))
+        // {
+        //     $messages[] = (object) array(
+        //       'error' => false,
+        //       'heading' => $licenseInfo['heading'],
+        //       'content' => $licenseInfo['content'],
+        //       'footer' => ''
+        //     );
+        // }
 
         $template->messages = $messages;
 

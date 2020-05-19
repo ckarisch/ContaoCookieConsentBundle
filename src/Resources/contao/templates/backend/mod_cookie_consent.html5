@@ -12,27 +12,6 @@
         <?php endforeach; ?>
     </div>
 </section>
-<section class="section">
-    <div>
-        <h1>Produkt Key</h1>
-        <p>Um premium Funktionen nutzen zu können, ist ein Produkt Key erforderlich.
-            Der Produkt Key kann auf unserem <a href="https://shop.formundzeichen.at" target="_blank"><strong>Web Shop</strong></a> erworben werden.
-            Die Standardfunktionalität inklusive Google Analytics ist gratis. Die Standard Lizenz kann sowohl privat als auch kommerziell verwendet werden.
-            <br /><br />
-            Aktuelle Lizenz: <strong><?= $this->licenseName ?></strong>
-        </p>
-        <form action="<?= \Contao\StringUtil::decodeEntities( \Backend::addToUrl('state=set-key',true) ); ?>" method="post">
-            <input type="text" name="licenseKey" placeholder="Produkt Key"/>
-            <input type="submit" value="Speichern" />
-            <input type="hidden" name="REQUEST_TOKEN" value="<?= REQUEST_TOKEN ?>">
-        </form>
-        <?= $this->setKeyMessage ? $this->setKeyMessage : '' ?>
-
-        <?php foreach ($this->results as $result): ?>
-        <p><?= $result ?></p>
-        <?php endforeach; ?>
-    </div>
-</section>
 
 <div class="footer">
 <span class="version"><?= $this->version ?></span>
