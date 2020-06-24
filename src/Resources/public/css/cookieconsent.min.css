@@ -389,6 +389,7 @@
 
 .fz_cookie_consent_html_loader button {
 	cursor: pointer;
+	margin: 10px;
 }
 
 .fz_cookie_consent_html_loader .load_html{
@@ -396,6 +397,7 @@
 	min-height: 200px;
 	background: #eee;
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	margin: 1rem 0;

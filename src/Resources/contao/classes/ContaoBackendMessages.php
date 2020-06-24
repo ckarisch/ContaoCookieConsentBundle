@@ -90,6 +90,7 @@ class ContaoBackendMessages extends \Backend
         if(!isset($key)) {
             $key = \Config::get('fzCookiesLicense');
         }
+        if($key == '') $key = null;
         $licenseLevel = \Config::get('fzCookiesLicenseLevel');
         $nextCheck = \Config::get('fzCookiesNextLicenseCheck');
 
