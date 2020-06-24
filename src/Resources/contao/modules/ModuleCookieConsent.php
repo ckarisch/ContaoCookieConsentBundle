@@ -50,7 +50,7 @@ class ModuleCookieConsent extends \BackendModule
                 break;
             }
         $this->Template->licenseName = $licenseName;
-        $this->Template->license = $license . " _ how";
+        $this->Template->license = $license;
         $this->Template->results = array();
 
 		$objSession = System::getContainer()->get('session');
@@ -75,7 +75,7 @@ class ModuleCookieConsent extends \BackendModule
                 break;
 
             case 'set-key':
-                $key = \Input::post('licenseKey');
+                $key = trim(\Input::post('licenseKey'));
                 \Config::persist('fzCookiesLicense', $key);
 
                 $bm = new \Formundzeichen\ContaoCookieConsentBundle\ContaoBackendMessages();

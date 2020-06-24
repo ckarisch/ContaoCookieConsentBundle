@@ -47,16 +47,16 @@ class ContaoBackendMessages extends \Backend
             );
         }
 
-        // $licenseInfo = $this->checkLicense();
-        // if(isset($licenseInfo))
-        // {
-        //     $messages[] = (object) array(
-        //       'error' => false,
-        //       'heading' => $licenseInfo['heading'],
-        //       'content' => $licenseInfo['content'],
-        //       'footer' => ''
-        //     );
-        // }
+        $licenseInfo = $this->checkLicense();
+        if(isset($licenseInfo))
+        {
+            $messages[] = (object) array(
+              'error' => false,
+              'heading' => $licenseInfo['heading'],
+              'content' => $licenseInfo['content'],
+              'footer' => ''
+            );
+        }
 
         $template->messages = $messages;
 
@@ -86,8 +86,10 @@ class ContaoBackendMessages extends \Backend
         return $errors;
     }
 
-    public function checkLicense($key = '', $checkTime = true) {
-        $license = \Config::get('fzCookiesLicense');
+    public function checkLicense($key = null, $checkTime = true) {
+        if(!isset($key)) {
+            $key = \Config::get('fzCookiesLicense');
+        }
         $licenseLevel = \Config::get('fzCookiesLicenseLevel');
         $nextCheck = \Config::get('fzCookiesNextLicenseCheck');
 
@@ -122,11 +124,13 @@ class ContaoBackendMessages extends \Backend
                 $keyValid = $json['keyValid'];
 
                 if(!$keyValid) {
+                    \Config::persist('fzCookiesLicense', null);
                     \Config::persist('fzCookiesLicenseLevel', 1);
                 }
                 else {
                     if($license) {
             		      \Config::persist('fzCookiesLicense', $license);
+                          // 2Do: check domainChanged
                       }
 
               		\Config::persist('fzCookiesLicenseLevel', $licenseLevel);
