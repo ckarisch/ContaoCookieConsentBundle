@@ -26,11 +26,11 @@ $GLOBALS['TL_DCA']['tl_settings']['fields']['fzCookiesEnableOnPrivacyPage'] = ar
 		);
 
 $GLOBALS['TL_DCA']['tl_settings']['fields']['fzCookiesEnableOnImprintPage'] = array
-(
-	'label'                   => &$GLOBALS['TL_LANG']['tl_settings']['fzCookiesEnableOnImprintPage'],
-	'inputType'               => 'checkbox',
-	'eval'                    => array('tl_class'=>'w50')
-);
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_settings']['fzCookiesEnableOnImprintPage'],
+			'inputType'               => 'checkbox',
+			'eval'                    => array('tl_class'=>'w50')
+		);
 
 $GLOBALS['TL_DCA']['tl_settings']['fields']['fzCookiesHeading'] = array
 		(
