@@ -31,6 +31,7 @@
   font-family: Montserrat,sans-serif;
   letter-spacing: .07em;
 	line-height: 1;
+	height: auto;
 }
 
 .mod_cookieconsent input.submit:hover, .mod_cookieconsent button:hover {
@@ -309,6 +310,11 @@
 .widget-radio input ~ .checkmark:after {
   content: "";
   position: absolute;
+  display: none;
+}
+
+/* disable before element added from some themes */
+.widget-radio input ~ .checkmark:before {
   display: none;
 }
 
