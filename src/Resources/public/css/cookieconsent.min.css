@@ -284,7 +284,7 @@
 }
 
 /* Create a custom radio button */
-.widget-radio .checkmark {
+.widget-radio input ~ .checkmark {
   position: absolute;
   top: 22px;
   left: 20px;
@@ -292,6 +292,7 @@
   width: 20px;
   background-color: #eee;
   border-radius: 50%;
+	padding: 0;
 }
 
 /* On mouse-over, add a grey background color */
@@ -305,7 +306,7 @@
 }
 
 /* Create the indicator (the dot/circle - hidden when not checked) */
-.widget-radio .checkmark:after {
+.widget-radio input ~ .checkmark:after {
   content: "";
   position: absolute;
   display: none;
@@ -317,7 +318,7 @@
 }
 
 /* Style the indicator (dot/circle) */
-.widget-radio .checkmark:after {
+.widget-radio input ~ .checkmark:after {
   top: 50%;
   left: 50%;
   width: 6px;
