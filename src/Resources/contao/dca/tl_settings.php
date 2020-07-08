@@ -21,14 +21,24 @@ $GLOBALS['TL_DCA']['tl_settings']['fields']['fzCookiesTemplateName'] = array
 $GLOBALS['TL_DCA']['tl_settings']['fields']['fzCookiesEnableOnPrivacyPage'] = array
 		(
 			'label'                   => &$GLOBALS['TL_LANG']['tl_settings']['fzCookiesEnableOnPrivacyPage'],
-			'inputType'               => 'checkbox',
+			'inputType'               => 'select',
+			'options'									=> array(
+																				'show' => &$GLOBALS['TL_LANG']['tl_settings']['fzCookiesEnableSelect'][0],
+																				'hide' => &$GLOBALS['TL_LANG']['tl_settings']['fzCookiesEnableSelect'][1]
+																	 ),
+			'default'					 => 'hide',
 			'eval'                    => array('tl_class'=>'w50')
 		);
 
 $GLOBALS['TL_DCA']['tl_settings']['fields']['fzCookiesEnableOnImprintPage'] = array
 		(
 			'label'                   => &$GLOBALS['TL_LANG']['tl_settings']['fzCookiesEnableOnImprintPage'],
-			'inputType'               => 'checkbox',
+			'inputType'               => 'select',
+			'options'									=> array(
+																				'show' => &$GLOBALS['TL_LANG']['tl_settings']['fzCookiesEnableSelect'][0],
+																				'hide' => &$GLOBALS['TL_LANG']['tl_settings']['fzCookiesEnableSelect'][1]
+																	 ),
+			'default'					 => 'hide',
 			'eval'                    => array('tl_class'=>'w50')
 		);
 
@@ -70,14 +80,24 @@ $GLOBALS['TL_DCA']['tl_settings']['fields']['fzCookiesPrivacyPage'] = array
 $GLOBALS['TL_DCA']['tl_settings']['fields']['fzCookiesDisableCookieLevel2'] = array
 		(
 			'label'                   => &$GLOBALS['TL_LANG']['tl_settings']['fzCookiesDisableCookieLevel2'],
-			'inputType'               => 'checkbox',
+			'inputType'               => 'select',
+			'options'									=> array(
+																				'show' => &$GLOBALS['TL_LANG']['tl_settings']['fzCookiesEnableSelect'][0],
+																				'hide' => &$GLOBALS['TL_LANG']['tl_settings']['fzCookiesEnableSelect'][1]
+																	 ),
+			'default'					 => 'hide',
 			'eval'                    => array('tl_class'=>'w50')
 		);
 
 $GLOBALS['TL_DCA']['tl_settings']['fields']['fzCookiesDisableCookieLevel3'] = array
 		(
 		'label'                   => &$GLOBALS['TL_LANG']['tl_settings']['fzCookiesDisableCookieLevel3'],
-		'inputType'               => 'checkbox',
+		'inputType'               => 'select',
+		'options'									=> array(
+																			'show' => &$GLOBALS['TL_LANG']['tl_settings']['fzCookiesEnableSelect'][0],
+																			'hide' => &$GLOBALS['TL_LANG']['tl_settings']['fzCookiesEnableSelect'][1]
+																 ),
+		'default'					 => 'show',
 		'eval'                    => array('tl_class'=>'w50')
 		);
 

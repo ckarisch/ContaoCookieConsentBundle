@@ -8,6 +8,7 @@
  */
 
 namespace Formundzeichen\ContaoCookieConsentBundle\EventListener;
+use Formundzeichen\ContaoCookieConsentBundle\ContaoCookieConsentBundle;
 
 use Contao\CoreBundle\ServiceAnnotation\Hook;
 use Contao\PageRegular;
@@ -23,10 +24,12 @@ class GetPageLayoutListener implements ServiceAnnotationInterface
     public function onGetPageLayout(PageModel $pageModel, LayoutModel $layout, PageRegular $pageRegular): void
     {
         $hideClass = 'hide_cookie_consent';
+        $bundle = new ContaoCookieConsentBundle();
+        $defaults = $bundle->getDefaults();
 
-        if(!$GLOBALS['TL_CONFIG']['fzCookiesEnableOnImprintPage'])
+        if($defaults['fzCookiesEnableOnImprintPage'] == 'hide')
         {
-            $imprintPage = \PageModel::findWithDetails($GLOBALS['TL_CONFIG']['fzCookiesImprintPage']);
+            $imprintPage = \PageModel::findWithDetails($defaults['fzCookiesImprintPage']);
             if($imprintPage->id == $pageModel->id)
             {
                 $pageModel->cssClass = trim($pageModel->cssClass . ' ' . $hideClass);
@@ -34,9 +37,9 @@ class GetPageLayoutListener implements ServiceAnnotationInterface
             }
         }
 
-        if(!$GLOBALS['TL_CONFIG']['fzCookiesEnableOnPrivacyPage'])
+        if($defaults['fzCookiesEnableOnPrivacyPage'] == 'hide')
         {
-            $privacyPage = \PageModel::findWithDetails($GLOBALS['TL_CONFIG']['fzCookiesPrivacyPage']);
+            $privacyPage = \PageModel::findWithDetails($defaults['fzCookiesPrivacyPage']);
             if($privacyPage->id == $pageModel->id)
             {
                 $pageModel->cssClass = trim($pageModel->cssClass . ' ' . $hideClass);

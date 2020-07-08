@@ -13,6 +13,7 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 use Contao\FrontendTemplate;
 use Contao\TemplateLoader;
+use Contao\PageModel;
 
 class ContaoCookieConsentBundle extends Bundle
 {
@@ -35,8 +36,8 @@ class ContaoCookieConsentBundle extends Bundle
         // Cookie name
         $template->cookie = sprintf('FZ_COOKIECONSENT_%s', $data['id']);
         $template->maxValue = 3;
-        $template->disableCookieLevel2 = $GLOBALS['TL_CONFIG']['fzCookiesDisableCookieLevel2'];
-        $template->disableCookieLevel3 = $GLOBALS['TL_CONFIG']['fzCookiesDisableCookieLevel3'];
+        $template->disableCookieLevel2 = $defaults['fzCookiesDisableCookieLevel2'] == 'hide';
+        $template->disableCookieLevel3 = $defaults['fzCookiesDisableCookieLevel3'] == 'hide';
 
         // set max cookie value
         if($template->disableCookieLevel3) {
@@ -49,23 +50,23 @@ class ContaoCookieConsentBundle extends Bundle
 
 
         // imprint and privacy pages
-        $imprintPage = \PageModel::findWithDetails($GLOBALS['TL_CONFIG']['fzCookiesImprintPage']);
-        $privacyPage = \PageModel::findWithDetails($GLOBALS['TL_CONFIG']['fzCookiesPrivacyPage']);
+        $imprintPage = \PageModel::findWithDetails($defaults['fzCookiesImprintPage']);
+        $privacyPage = \PageModel::findWithDetails($defaults['fzCookiesPrivacyPage']);
 
         $imprintPageUrl = $imprintPage ? $imprintPage->getAbsoluteUrl() : $defaults["fzCookiesImprintPage"];
         $privacyPageUrl = $privacyPage ? $privacyPage->getAbsoluteUrl() : $defaults["fzCookiesPrivacyPage"];
 
         // text array
         $template->text = array(
-            'heading'  => $GLOBALS['TL_CONFIG']['fzCookiesHeading'] ? $GLOBALS['TL_CONFIG']['fzCookiesHeading'] : $defaults['fzCookiesHeading'],
-            'fzCookiesImprintTitle'  => $GLOBALS['TL_CONFIG']['fzCookiesImprintTitle'] ? $GLOBALS['TL_CONFIG']['fzCookiesImprintTitle'] : $defaults['fzCookiesImprintTitle'],
-            'fzCookiesPrivacyTitle'  => $GLOBALS['TL_CONFIG']['fzCookiesPrivacyTitle'] ? $GLOBALS['TL_CONFIG']['fzCookiesPrivacyTitle'] : $defaults['fzCookiesPrivacyTitle'],
-            'fzCookiesCookieTitle1'  => $GLOBALS['TL_CONFIG']['fzCookiesCookieTitle1'] ? $GLOBALS['TL_CONFIG']['fzCookiesCookieTitle1'] : $defaults['fzCookiesCookieTitle1'],
-            'fzCookiesCookieTitle2'  => $GLOBALS['TL_CONFIG']['fzCookiesCookieTitle2'] ? $GLOBALS['TL_CONFIG']['fzCookiesCookieTitle2'] : $defaults['fzCookiesCookieTitle2'],
-            'fzCookiesCookieTitle3'  => $GLOBALS['TL_CONFIG']['fzCookiesCookieTitle3'] ? $GLOBALS['TL_CONFIG']['fzCookiesCookieTitle3'] : $defaults['fzCookiesCookieTitle3'],
-            'fzCookiesCookieDescription1'  => $GLOBALS['TL_CONFIG']['fzCookiesCookieDescription1'] ? $GLOBALS['TL_CONFIG']['fzCookiesCookieDescription1'] : $defaults['fzCookiesCookieDescription1'],
-            'fzCookiesCookieDescription2'  => $GLOBALS['TL_CONFIG']['fzCookiesCookieDescription2'] ? $GLOBALS['TL_CONFIG']['fzCookiesCookieDescription2'] : $defaults['fzCookiesCookieDescription2'],
-            'fzCookiesCookieDescription3'  => $GLOBALS['TL_CONFIG']['fzCookiesCookieDescription3'] ? $GLOBALS['TL_CONFIG']['fzCookiesCookieDescription3'] : $defaults['fzCookiesCookieDescription3'],
+            'heading'  => $defaults['fzCookiesHeading'],
+            'fzCookiesImprintTitle'  => $defaults['fzCookiesImprintTitle'],
+            'fzCookiesPrivacyTitle'  => $defaults['fzCookiesPrivacyTitle'],
+            'fzCookiesCookieTitle1'  => $defaults['fzCookiesCookieTitle1'],
+            'fzCookiesCookieTitle2'  => $defaults['fzCookiesCookieTitle2'],
+            'fzCookiesCookieTitle3'  => $defaults['fzCookiesCookieTitle3'],
+            'fzCookiesCookieDescription1'  => $defaults['fzCookiesCookieDescription1'],
+            'fzCookiesCookieDescription2'  => $defaults['fzCookiesCookieDescription2'],
+            'fzCookiesCookieDescription3'  => $defaults['fzCookiesCookieDescription3'],
         );
 
         // links array
@@ -77,20 +78,56 @@ class ContaoCookieConsentBundle extends Bundle
         return $template;
     }
 
-    private function getDefaults() {
-        return array(
-            'fzCookiesHeading' => 'Wählen Sie Ihre Datenschutzeinstellungen',
-            'fzCookiesImprintTitle' => 'Impressum',
-            'fzCookiesImprintPage' => 'impressum.html',
-            'fzCookiesPrivacyTitle' => 'Datenschutz',
-            'fzCookiesPrivacyPage' => 'datenschutz.html',
-            'fzCookiesCookieTitle1' => 'Notwendig',
-            'fzCookiesCookieDescription1' => 'Mit dieser Einstellung wird zur korrekten Darstellung der Website Google Fonts geladen.',
-            'fzCookiesCookieTitle2' => 'Erweitert',
-            'fzCookiesCookieDescription2' => 'Mit dieser Einstellung werden notwendige Cookies und Cookies für erweiterte Funktionen geladen und zugelassen.',
-            'fzCookiesCookieTitle3' => 'Analyse',
-            'fzCookiesCookieDescription3' => 'Mit dieser Einstellung werden Google Fonts, Cookies für erweiterte Funktionen, sowie Google Analytics geladen und zugelassen.'
+    public function getDefaults() {
+        $defaults = array(
+            'fzCookiesHeading' => array('Wählen Sie Ihre Datenschutzeinstellungen', false),
+            'fzCookiesImprintTitle' => array('Impressum', false),
+            'fzCookiesImprintPage' => array('impressum.html', false),
+            'fzCookiesPrivacyTitle' => array('Datenschutz', false),
+            'fzCookiesPrivacyPage' => array('datenschutz.html', false),
+            'fzCookiesCookieTitle1' => array('Notwendig', false),
+            'fzCookiesCookieDescription1' => array('Mit dieser Einstellung wird zur korrekten Darstellung der Website Google Fonts geladen.', false),
+            'fzCookiesCookieTitle2' => array('Erweitert', false),
+            'fzCookiesCookieDescription2' => array('Mit dieser Einstellung werden notwendige Cookies und Cookies für erweiterte Funktionen geladen und zugelassen.', false),
+            'fzCookiesCookieTitle3' => array('Analyse', false),
+            'fzCookiesCookieDescription3' => array('Mit dieser Einstellung werden Google Fonts, Cookies für erweiterte Funktionen, sowie Google Analytics geladen und zugelassen.', false),
+            'fzCookiesDisableCookieLevel2' => array('hide', true),
+            'fzCookiesDisableCookieLevel3' => array('show', true),
+            'fzCookiesEnableOnPrivacyPage' => array('hide', true),
+            'fzCookiesEnableOnImprintPage' => array('show', true)
         );
+
+        // save defaults to config
+        foreach ($defaults as $key => $value)
+        {
+            if(empty(\Config::get($key)))
+                \Config::persist($key, $value[0]);
+            else {
+                $defaults[$key][0] = \Config::get($key);
+            }
+        }
+
+        $roots = PageModel::findByType('root');
+		foreach ($roots as $page) {
+            if($page->__get('language') == $GLOBALS['TL_LANGUAGE']) {
+                foreach ($defaults as $key => $value)
+                {
+    	             if (!empty($page->__get($key))) {
+                         // check if set to default
+                         if($value[1] && $page->__get($key) == 'default') {
+                             continue;
+                         }
+                         else {
+                             $defaults[$key][0] = $page->__get($key);
+                         }
+                     }
+                 }
+             }
+         }
+
+        // only return first value of array
+        $first = function($value) { return $value[0]; };
+        return array_map($first, $defaults);
     }
 
     private function getCssFiles($templateName) {

@@ -22,17 +22,29 @@ $GLOBALS['TL_DCA']['tl_page']['fields']['fzCookiesTemplateName'] = array
 $GLOBALS['TL_DCA']['tl_page']['fields']['fzCookiesEnableOnPrivacyPage'] = array
 		(
 			'label'                   => &$GLOBALS['TL_LANG']['tl_page']['fzCookiesEnableOnPrivacyPage'],
-			'inputType'               => 'checkbox',
+			'inputType'               => 'select',
+			'options'									=> array(
+																				'default' => &$GLOBALS['TL_LANG']['tl_settings']['fzCookiesDefault'],
+																				'show' => &$GLOBALS['TL_LANG']['tl_settings']['fzCookiesEnableSelect'][0],
+																				'hide' => &$GLOBALS['TL_LANG']['tl_settings']['fzCookiesEnableSelect'][1]
+																	 ),
+			'default'					 => 'hide',
 			'eval'                    => array('tl_class'=>'w50'),
-        	'sql' => "INT NULL"
+        	'sql' => "varchar(10) NULL"
 		);
 
 $GLOBALS['TL_DCA']['tl_page']['fields']['fzCookiesEnableOnImprintPage'] = array
         (
         	'label'                   => &$GLOBALS['TL_LANG']['tl_page']['fzCookiesEnableOnImprintPage'],
-        	'inputType'               => 'checkbox',
+			'inputType'               => 'select',
+			'options'									=> array(
+																				'default' => &$GLOBALS['TL_LANG']['tl_settings']['fzCookiesDefault'],
+																				'show' => &$GLOBALS['TL_LANG']['tl_settings']['fzCookiesEnableSelect'][0],
+																				'hide' => &$GLOBALS['TL_LANG']['tl_settings']['fzCookiesEnableSelect'][1]
+																	 ),
+			'default'					 => 'hide',
         	'eval'                    => array('tl_class'=>'w50'),
-            'sql' => "INT NULL"
+            'sql' => "varchar(10) NULL"
         );
 
 $GLOBALS['TL_DCA']['tl_page']['fields']['fzCookiesHeading'] = array
@@ -78,17 +90,29 @@ $GLOBALS['TL_DCA']['tl_page']['fields']['fzCookiesPrivacyPage'] = array
 $GLOBALS['TL_DCA']['tl_page']['fields']['fzCookiesDisableCookieLevel2'] = array
 		(
 			'label'                   => &$GLOBALS['TL_LANG']['tl_page']['fzCookiesDisableCookieLevel2'],
-			'inputType'               => 'checkbox',
+			'inputType'               => 'select',
+			'options'									=> array(
+																				'default' => &$GLOBALS['TL_LANG']['tl_settings']['fzCookiesDefault'],
+																				'show' => &$GLOBALS['TL_LANG']['tl_settings']['fzCookiesEnableSelect'][0],
+																				'hide' => &$GLOBALS['TL_LANG']['tl_settings']['fzCookiesEnableSelect'][1]
+																	 ),
+			'default'					 => 'hide',
 			'eval'                    => array('tl_class'=>'w50'),
-            'sql' => "INT NULL"
+            'sql' => "varchar(10) NULL"
 		);
 
 $GLOBALS['TL_DCA']['tl_page']['fields']['fzCookiesDisableCookieLevel3'] = array
 		(
 		'label'                   => &$GLOBALS['TL_LANG']['tl_page']['fzCookiesDisableCookieLevel3'],
-		'inputType'               => 'checkbox',
+		'inputType'               => 'select',
+		'options'									=> array(
+																			'default' => &$GLOBALS['TL_LANG']['tl_settings']['fzCookiesDefault'],
+																			'show' => &$GLOBALS['TL_LANG']['tl_settings']['fzCookiesEnableSelect'][0],
+																			'hide' => &$GLOBALS['TL_LANG']['tl_settings']['fzCookiesEnableSelect'][1]
+																 ),
+		'default'					 => 'show',
 		'eval'                    => array('tl_class'=>'w50'),
-        'sql' => "INT NULL"
+        'sql' => "varchar(10) NULL"
 		);
 
 $GLOBALS['TL_DCA']['tl_page']['fields']['fzCookiesCookieTitle1'] = array
