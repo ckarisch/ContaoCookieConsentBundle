@@ -255,15 +255,11 @@
 	margin-right: 3px;
 }
 
-
 .hide_cookie_consent .mod_cookieconsent {
 	display: none;
 }
 
-
-/* radio-button */
-/* Customize the label (the container) */
-div.widget-radio {
+div.mod_cookieconsent div.widget-radio {
   display: block;
   position: relative;
 	margin: 0;
@@ -275,8 +271,7 @@ div.widget-radio {
   user-select: none;
 }
 
-/* Hide the browser's default radio button */
-.widget-radio input {
+div.mod_cookieconsent div.widget-radio input {
   position: absolute;
   opacity: 0;
   cursor: pointer;
@@ -284,8 +279,7 @@ div.widget-radio {
   width: 0;
 }
 
-/* Create a custom radio button */
-.widget-radio input ~ .checkmark {
+div.mod_cookieconsent div.widget-radio input ~ .checkmark {
   position: absolute;
   top: 22px;
   left: 20px;
@@ -296,35 +290,29 @@ div.widget-radio {
 	padding: 0;
 }
 
-/* On mouse-over, add a grey background color */
-.widget-radio:hover input ~ .checkmark {
+div.mod_cookieconsent div.widget-radio:hover input ~ .checkmark {
   background-color: #ccc;
 }
 
-/* When the radio button is checked, add a blue background */
-.widget-radio input:checked ~ .checkmark {
+div.mod_cookieconsent div.widget-radio input:checked ~ .checkmark {
   background-color: #519249;
 }
 
-/* Create the indicator (the dot/circle - hidden when not checked) */
-.widget-radio input ~ .checkmark:after {
+div.mod_cookieconsent div.widget-radio input ~ .checkmark:after {
   content: "";
   position: absolute;
   display: none;
 }
 
-/* disable before element added from some themes */
-.widget-radio input ~ .checkmark:before {
+div.mod_cookieconsent div.widget-radio input ~ .checkmark:before {
   display: none;
 }
 
-/* Show the indicator (dot/circle) when checked */
-.widget-radio input:checked ~ .checkmark:after {
+div.mod_cookieconsent div.widget-radio input:checked ~ .checkmark:after {
   display: block;
 }
 
-/* Style the indicator (dot/circle) */
-.widget-radio input ~ .checkmark:after {
+div.mod_cookieconsent div.widget-radio input ~ .checkmark:after {
   top: 50%;
   left: 50%;
   width: 6px;
@@ -333,7 +321,6 @@ div.widget-radio {
   background: white;
   transform: translate3d(-50%, -50%, 0);
 }
-
 
 @media all and (max-width: 527px) {
 	.mod_cookieconsent .cookie_info {
@@ -361,7 +348,6 @@ div.widget-radio {
 		padding-right: 5px;
 	}
 }
-
 
 @media all and (max-width: 375px) {
 	.mod_cookieconsent .privacy_content {
