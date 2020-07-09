@@ -7,7 +7,7 @@
  *
  */
 
-define('FZ_COOKIE_CONSENT_VERSION', '1.5.2');
+define('FZ_COOKIE_CONSENT_VERSION', '1.5.3');
 
 $GLOBALS['TL_HOOKS']['outputFrontendTemplate'][] = ['Formundzeichen\ContaoCookieConsentBundle\EventListener\TemplateListener', 'onOutputFrontendTemplate'];
 $GLOBALS['TL_HOOKS']['getSystemMessages'][] = ['Formundzeichen\ContaoCookieConsentBundle\EventListener\GetSystemMessagesListener', 'onGetSystemMessages'];
