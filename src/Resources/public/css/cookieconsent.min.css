@@ -261,12 +261,12 @@
 }
 
 
-
 /* radio-button */
 /* Customize the label (the container) */
-.widget-radio {
+div.widget-radio {
   display: block;
   position: relative;
+	margin: 0;
   cursor: pointer;
   font-size: 22px;
   -webkit-user-select: none;
