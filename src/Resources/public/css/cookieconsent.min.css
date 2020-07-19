@@ -54,7 +54,7 @@
 }
 
 .mod_cookieconsent .privacy_overlay {
-	z-index: 100;
+	z-index: 10000000;
 	position: fixed;
 	left: 0;
 	top: 0;
@@ -69,7 +69,7 @@
 	top: 0;
 	left: 50%;
 	transform: translate3d(-50%, 0, 0);
-	z-index: 101;
+	z-index: 10000001;
 	width: 90%;
 	max-width: 475px;
 	height: 100%;
