@@ -36,3 +36,7 @@ $GLOBALS['TL_LANG']['tl_page']['fzCookiesCookieTitle3']   = array('Analyse-Cooki
 $GLOBALS['TL_LANG']['tl_page']['fzCookiesCookieDescription1']   = array('Erforderliche Cookies Beschreibung', 'Beschreibung für erforderliche Cookies');
 $GLOBALS['TL_LANG']['tl_page']['fzCookiesCookieDescription2']   = array('Erweiterte Cookies Beschreibung', 'Beschreibung für Erweiterte Cookies');
 $GLOBALS['TL_LANG']['tl_page']['fzCookiesCookieDescription3']   = array('Analyse-Cookies Beschreibung', 'Beschreibung für Analyse-Cookies');
+$GLOBALS['TL_LANG']['tl_page']['fzCookiesButtonSave']   = array('Speichern-Button Titel', 'Der Titel des Speichern-Buttons');
+$GLOBALS['TL_LANG']['tl_page']['fzCookiesButtonChangeSettings']   = array('Einstellungen Ändern-Button Titel', 'Der Titel des Einstellungen Ändern-Buttons');
+$GLOBALS['TL_LANG']['tl_page']['fzCookiesButtonAcceptAll']   = array('Alle Akzeptieren-Button Titel', 'Der Titel des Alle Akzeptieren-Buttons');
+$GLOBALS['TL_LANG']['tl_page']['fzCookiesButtonBack']   = array('Zurück-Button Titel', 'Der Titel des Zurück-Buttons');

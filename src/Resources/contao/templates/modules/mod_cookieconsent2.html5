@@ -59,9 +59,9 @@ $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/contaocookieconsent/js/cookieconsent.min.
 							</div>
 						</div>
 						<div class="ce_hyperlink">
-							<input type="submit" name="save" class="submit" value="speichern &amp; fortfahren">
+							<input type="submit" name="save" class="submit" value="<?= $this->text["fzCookiesButtonSave"] ?>">
 						</div>
-            <button class="toggleSettings">zurück</button>
+            <button class="toggleSettings"><?= $this->text["fzCookiesButtonBack"] ?></button>
 					</form>
           <div class="toggleSettings">
             <span class="info">
@@ -76,11 +76,11 @@ $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/contaocookieconsent/js/cookieconsent.min.
 
               <?php endif; ?>
             </span>
-            <button class="toggleSettings">Einstellungen ändern</button>
+            <button class="toggleSettings"><?= $this->text["fzCookiesButtonChangeSettings"] ?></button>
           </div>
           <form name="acceptAllForm" method="post">
 						<div class="ce_hyperlink">
-							<input type="submit" name="save" class="submit colored acceptAll" value="Alle akzeptieren">
+							<input type="submit" name="save" class="submit colored acceptAll" value="<?= $this->text["fzCookiesButtonAcceptAll"] ?>">
 						</div>
 					</form>
 					<div class="links">

@@ -58,15 +58,19 @@ class ContaoCookieConsentBundle extends Bundle
 
         // text array
         $template->text = array(
-            'heading'  => $defaults['fzCookiesHeading'],
-            'fzCookiesImprintTitle'  => $defaults['fzCookiesImprintTitle'],
-            'fzCookiesPrivacyTitle'  => $defaults['fzCookiesPrivacyTitle'],
-            'fzCookiesCookieTitle1'  => $defaults['fzCookiesCookieTitle1'],
-            'fzCookiesCookieTitle2'  => $defaults['fzCookiesCookieTitle2'],
-            'fzCookiesCookieTitle3'  => $defaults['fzCookiesCookieTitle3'],
-            'fzCookiesCookieDescription1'  => $defaults['fzCookiesCookieDescription1'],
-            'fzCookiesCookieDescription2'  => $defaults['fzCookiesCookieDescription2'],
-            'fzCookiesCookieDescription3'  => $defaults['fzCookiesCookieDescription3'],
+            'heading' => $defaults['fzCookiesHeading'],
+            'fzCookiesImprintTitle' => $defaults['fzCookiesImprintTitle'],
+            'fzCookiesPrivacyTitle' => $defaults['fzCookiesPrivacyTitle'],
+            'fzCookiesCookieTitle1' => $defaults['fzCookiesCookieTitle1'],
+            'fzCookiesCookieTitle2' => $defaults['fzCookiesCookieTitle2'],
+            'fzCookiesCookieTitle3' => $defaults['fzCookiesCookieTitle3'],
+            'fzCookiesCookieDescription1' => $defaults['fzCookiesCookieDescription1'],
+            'fzCookiesCookieDescription2' => $defaults['fzCookiesCookieDescription2'],
+            'fzCookiesCookieDescription3' => $defaults['fzCookiesCookieDescription3'],
+            'fzCookiesButtonSave' => $defaults['fzCookiesButtonSave'],
+            'fzCookiesButtonChangeSettings' => $defaults['fzCookiesButtonChangeSettings'],
+            'fzCookiesButtonAcceptAll' => $defaults['fzCookiesButtonAcceptAll'],
+            'fzCookiesButtonBack' => $defaults['fzCookiesButtonBack'],
         );
 
         // links array
@@ -79,6 +83,8 @@ class ContaoCookieConsentBundle extends Bundle
     }
 
     public function getDefaults() {
+
+        // array(array(value, canBeSetToDefault))
         $defaults = array(
             'fzCookiesHeading' => array('Wählen Sie Ihre Datenschutzeinstellungen', false),
             'fzCookiesImprintTitle' => array('Impressum', false),
@@ -94,7 +100,11 @@ class ContaoCookieConsentBundle extends Bundle
             'fzCookiesDisableCookieLevel2' => array('hide', true),
             'fzCookiesDisableCookieLevel3' => array('show', true),
             'fzCookiesEnableOnPrivacyPage' => array('hide', true),
-            'fzCookiesEnableOnImprintPage' => array('show', true)
+            'fzCookiesEnableOnImprintPage' => array('show', true),
+            'fzCookiesButtonSave' => array('Speichern & Fortfahren', false),
+            'fzCookiesButtonChangeSettings' => array('Einstellungen ändern', false),
+            'fzCookiesButtonAcceptAll' => array('Alle akzeptieren', false),
+            'fzCookiesButtonBack' => array('Zurück', false),
         );
 
         // save defaults to config
@@ -108,7 +118,7 @@ class ContaoCookieConsentBundle extends Bundle
         }
 
         $roots = PageModel::findByType('root');
-		foreach ($roots as $page) {
+        foreach ($roots as $page) {
             if($page->__get('language') == $GLOBALS['TL_LANGUAGE']) {
                 foreach ($defaults as $key => $value)
                 {

@@ -163,7 +163,39 @@ $GLOBALS['TL_DCA']['tl_page']['fields']['fzCookiesCookieDescription3'] = array
         	'sql' => "varchar(1024) NULL"
 		);
 
+$GLOBALS['TL_DCA']['tl_page']['fields']['fzCookiesButtonSave'] = array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_page']['fzCookiesButtonSave'],
+			'inputType'               => 'text',
+			'eval'                    => array('tl_class'=>'w50'),
+        	'sql' => "varchar(256) NULL"
+		);
+
+$GLOBALS['TL_DCA']['tl_page']['fields']['fzCookiesButtonChangeSettings'] = array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_page']['fzCookiesButtonChangeSettings'],
+			'inputType'               => 'text',
+			'eval'                    => array('tl_class'=>'w50'),
+        	'sql' => "varchar(256) NULL"
+		);
+
+$GLOBALS['TL_DCA']['tl_page']['fields']['fzCookiesButtonAcceptAll'] = array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_page']['fzCookiesButtonAcceptAll'],
+			'inputType'               => 'text',
+			'eval'                    => array('tl_class'=>'w50'),
+        	'sql' => "varchar(256) NULL"
+		);
+
+$GLOBALS['TL_DCA']['tl_page']['fields']['fzCookiesButtonBack'] = array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_page']['fzCookiesButtonBack'],
+			'inputType'               => 'text',
+			'eval'                    => array('tl_class'=>'w50'),
+        	'sql' => "varchar(256) NULL"
+		);
+
 /**
  * Modify palette
  */
-$GLOBALS['TL_DCA']['tl_page']['palettes']['root'] .= ';{fzCookiePopupSettings:hide},fzCookiesTemplateName,fzCookiesHeading,fzCookiesEnableOnImprintPage,fzCookiesEnableOnPrivacyPage,fzCookiesImprintTitle,fzCookiesImprintPage,fzCookiesPrivacyTitle,fzCookiesPrivacyPage,fzCookiesDisableCookieLevel2,fzCookiesDisableCookieLevel3,fzCookiesCookieTitle1,fzCookiesCookieDescription1,fzCookiesCookieTitle2,fzCookiesCookieDescription2,fzCookiesCookieTitle3,fzCookiesCookieDescription3';
+$GLOBALS['TL_DCA']['tl_page']['palettes']['root'] .= ';{fzCookiePopupSettings:hide},fzCookiesTemplateName,fzCookiesHeading,fzCookiesEnableOnImprintPage,fzCookiesEnableOnPrivacyPage,fzCookiesImprintTitle,fzCookiesImprintPage,fzCookiesPrivacyTitle,fzCookiesPrivacyPage,fzCookiesDisableCookieLevel2,fzCookiesDisableCookieLevel3,fzCookiesCookieTitle1,fzCookiesCookieDescription1,fzCookiesCookieTitle2,fzCookiesCookieDescription2,fzCookiesCookieTitle3,fzCookiesCookieDescription3,fzCookiesButtonSave,fzCookiesButtonChangeSettings,fzCookiesButtonAcceptAll,fzCookiesButtonBack';
