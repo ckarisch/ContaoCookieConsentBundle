@@ -18,9 +18,11 @@ $GLOBALS['TL_LANG']['tl_page']['fzCookiePopupSettings']      = 'Cookie popup set
 
 // Template Select
 $GLOBALS['TL_LANG']['tl_page']['fzCookiesSelect']   = array('Cookie popup extended (necessary cookies are preselected)', 'Cookie popup (accept all and settings button)');
-$GLOBALS['TL_LANG']['tl_settings']['fzCookiesEnableSelect']   = array('Show', 'Hide');
-$GLOBALS['TL_LANG']['tl_settings']['fzCookiesDefault'] = 'Default Setting';
+$GLOBALS['TL_LANG']['tl_page']['fzCookiesEnableSelect']   = array('Show', 'Hide');
+$GLOBALS['TL_LANG']['tl_page']['fzCookiesDefault'] = 'Default Setting';
 
+$GLOBALS['TL_LANG']['tl_page']['fzCookiesEnablePopup']   = array('Display Cookie Popup', 'Defines if the cookie popup shoud be displayed.');
+$GLOBALS['TL_LANG']['tl_page']['fzCookiesTemplateName']   = array('Template', 'Cookie Popup Template');
 $GLOBALS['TL_LANG']['tl_page']['fzCookiesHeading']   = array('Cookie popup heading', 'Fill in the heading of the cookie popup.');
 $GLOBALS['TL_LANG']['tl_page']['fzCookiesEnableOnImprintPage']   = array('Show on imprint page', 'Enable this option, to show the cookie popup on the imprint page.');
 $GLOBALS['TL_LANG']['tl_page']['fzCookiesEnableOnPrivacyPage']   = array('Show on privacy page', 'Enable this option, to show the cookie popup on the privacy page.');

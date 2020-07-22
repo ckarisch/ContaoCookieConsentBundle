@@ -20,6 +20,8 @@ $GLOBALS['TL_LANG']['tl_settings']['fzCookiePopupSettings']      = 'Cookie Popup
 $GLOBALS['TL_LANG']['tl_settings']['fzCookiesSelect']   = array('Cookie Popup Extended (notwendige Cookies sind vorausgewählt)', 'Cookie Popup (alle akzeptieren und Einstellungen Button)');
 $GLOBALS['TL_LANG']['tl_settings']['fzCookiesEnableSelect']   = array('Anzeigen', 'Ausblenden');
 
+$GLOBALS['TL_LANG']['tl_settings']['fzCookiesEnablePopup']   = array('Cookie Popup Anzeigen', 'Legt fest, ob das Cookie Popup angezeigt werden soll.');
+$GLOBALS['TL_LANG']['tl_settings']['fzCookiesTemplateName']   = array('Template', 'Cookie Popup Template');
 $GLOBALS['TL_LANG']['tl_settings']['fzCookiesHeading']   = array('Cookie Popup Überschrift', 'Tragen Sie hier die Überschrift des Cookie Popups ein.');
 $GLOBALS['TL_LANG']['tl_settings']['fzCookiesEnableOnImprintPage']   = array('Auf der Impressum Seite anzeigen', 'Legt fest, ob das Cookie Popup auf der Impressum Seite angezeigt werden soll.');
 $GLOBALS['TL_LANG']['tl_settings']['fzCookiesEnableOnPrivacyPage']   = array('Auf der Datenschutz Seite anzeigen', 'Legt fest, ob das Cookie Popup auf der Datenschutz Seite angezeigt werden soll.');

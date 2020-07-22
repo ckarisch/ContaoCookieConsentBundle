@@ -30,62 +30,67 @@ class ContaoCookieConsentBundle extends Bundle
         // get default config
         $defaults = $this->getDefaults();
 
-        $template = new FrontendTemplate($name);
-        $template->cssFiles = $this->getCssFiles($name);
+        if($defaults['fzCookiesEnablePopup'] === 'show') {
+            $template = new FrontendTemplate($name);
+            $template->cssFiles = $this->getCssFiles($name);
 
-        // Cookie name
-        $template->cookie = sprintf('FZ_COOKIECONSENT_%s', $data['id']);
-        $template->maxValue = 3;
-        $template->disableCookieLevel2 = $defaults['fzCookiesDisableCookieLevel2'] == 'hide';
-        $template->disableCookieLevel3 = $defaults['fzCookiesDisableCookieLevel3'] == 'hide';
+            // Cookie name
+            $template->cookie = sprintf('FZ_COOKIECONSENT_%s', $data['id']);
+            $template->maxValue = 3;
+            $template->disableCookieLevel2 = $defaults['fzCookiesDisableCookieLevel2'] == 'hide';
+            $template->disableCookieLevel3 = $defaults['fzCookiesDisableCookieLevel3'] == 'hide';
 
-        // set max cookie value
-        if($template->disableCookieLevel3) {
-            $template->maxValue = 2;
+            // set max cookie value
+            if($template->disableCookieLevel3) {
+                $template->maxValue = 2;
 
-            if($template->disableCookieLevel2) {
-                $template->maxValue = 1;
+                if($template->disableCookieLevel2) {
+                    $template->maxValue = 1;
+                }
             }
+
+            // imprint and privacy pages
+            $imprintPage = \PageModel::findWithDetails($defaults['fzCookiesImprintPage']);
+            $privacyPage = \PageModel::findWithDetails($defaults['fzCookiesPrivacyPage']);
+
+            $imprintPageUrl = $imprintPage ? $imprintPage->getAbsoluteUrl() : $defaults["fzCookiesImprintPage"];
+            $privacyPageUrl = $privacyPage ? $privacyPage->getAbsoluteUrl() : $defaults["fzCookiesPrivacyPage"];
+
+            // text array
+            $template->text = array(
+                'heading' => $defaults['fzCookiesHeading'],
+                'fzCookiesImprintTitle' => $defaults['fzCookiesImprintTitle'],
+                'fzCookiesPrivacyTitle' => $defaults['fzCookiesPrivacyTitle'],
+                'fzCookiesCookieTitle1' => $defaults['fzCookiesCookieTitle1'],
+                'fzCookiesCookieTitle2' => $defaults['fzCookiesCookieTitle2'],
+                'fzCookiesCookieTitle3' => $defaults['fzCookiesCookieTitle3'],
+                'fzCookiesCookieDescription1' => $defaults['fzCookiesCookieDescription1'],
+                'fzCookiesCookieDescription2' => $defaults['fzCookiesCookieDescription2'],
+                'fzCookiesCookieDescription3' => $defaults['fzCookiesCookieDescription3'],
+                'fzCookiesButtonSave' => $defaults['fzCookiesButtonSave'],
+                'fzCookiesButtonChangeSettings' => $defaults['fzCookiesButtonChangeSettings'],
+                'fzCookiesButtonAcceptAll' => $defaults['fzCookiesButtonAcceptAll'],
+                'fzCookiesButtonBack' => $defaults['fzCookiesButtonBack'],
+            );
+
+            // links array
+            $template->links = array(
+                'fzCookiesImprintPage' => $imprintPageUrl,
+                'fzCookiesPrivacyPage' => $privacyPageUrl
+            );
+
+            return $template;
         }
-
-
-        // imprint and privacy pages
-        $imprintPage = \PageModel::findWithDetails($defaults['fzCookiesImprintPage']);
-        $privacyPage = \PageModel::findWithDetails($defaults['fzCookiesPrivacyPage']);
-
-        $imprintPageUrl = $imprintPage ? $imprintPage->getAbsoluteUrl() : $defaults["fzCookiesImprintPage"];
-        $privacyPageUrl = $privacyPage ? $privacyPage->getAbsoluteUrl() : $defaults["fzCookiesPrivacyPage"];
-
-        // text array
-        $template->text = array(
-            'heading' => $defaults['fzCookiesHeading'],
-            'fzCookiesImprintTitle' => $defaults['fzCookiesImprintTitle'],
-            'fzCookiesPrivacyTitle' => $defaults['fzCookiesPrivacyTitle'],
-            'fzCookiesCookieTitle1' => $defaults['fzCookiesCookieTitle1'],
-            'fzCookiesCookieTitle2' => $defaults['fzCookiesCookieTitle2'],
-            'fzCookiesCookieTitle3' => $defaults['fzCookiesCookieTitle3'],
-            'fzCookiesCookieDescription1' => $defaults['fzCookiesCookieDescription1'],
-            'fzCookiesCookieDescription2' => $defaults['fzCookiesCookieDescription2'],
-            'fzCookiesCookieDescription3' => $defaults['fzCookiesCookieDescription3'],
-            'fzCookiesButtonSave' => $defaults['fzCookiesButtonSave'],
-            'fzCookiesButtonChangeSettings' => $defaults['fzCookiesButtonChangeSettings'],
-            'fzCookiesButtonAcceptAll' => $defaults['fzCookiesButtonAcceptAll'],
-            'fzCookiesButtonBack' => $defaults['fzCookiesButtonBack'],
-        );
-
-        // links array
-        $template->links = array(
-            'fzCookiesImprintPage' => $imprintPageUrl,
-            'fzCookiesPrivacyPage' => $privacyPageUrl
-        );
-
-        return $template;
+        else {
+            return new FrontendTemplate();
+        }
     }
 
     public function getDefaults() {
 
         // array(array(value, canBeSetToDefault))
         $defaults = array(
+            'fzCookiesEnablePopup' => array('show', true),
             'fzCookiesHeading' => array('Wählen Sie Ihre Datenschutzeinstellungen', false),
             'fzCookiesImprintTitle' => array('Impressum', false),
             'fzCookiesImprintPage' => array('impressum.html', false),
