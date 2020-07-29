@@ -117,7 +117,8 @@ class ContaoBackendMessages extends \Backend
                 'key' => isset($key) ? $key : ''
             ), JSON_FORCE_OBJECT));
 
-            if($data) {
+
+            if($data && $data != 'Internal Server Error') {
                 $json = json_decode($data, true);
 
                 $license = $json['key'];
@@ -136,6 +137,10 @@ class ContaoBackendMessages extends \Backend
 
               		\Config::persist('fzCookiesLicenseLevel', $licenseLevel);
                 }
+                \Config::persist('fzCookiesNextLicenseCheck', time() + (3600));
+            }
+            else {
+                // Server responded an internal server error
                 \Config::persist('fzCookiesNextLicenseCheck', time() + (3600));
             }
         }
