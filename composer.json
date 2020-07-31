@@ -1,10 +1,12 @@
 {
     "name": "formundzeichen/contao-cookie-consent-bundle",
     "type": "contao-bundle",
-    "description": "Responsive cookie consent plugin for Contao. The plugin provides different privacy settings for the visitor. Google Analytics is only loaded when the visitor agrees to enable statistics. The plugin supports OnePages - no need to reload page after setting privacy settings. Installation instructions: https://github.com/ckarisch/ContaoCookieConsentBundle",
+    "description": "Responsive cookie consent plugin for Contao. The plugin provides different cookie privacy settings for the visitor. Google Analytics is only loaded when the visitor agrees to enable statistics. The plugin supports OnePages - no need to reload page after setting privacy settings. Installation instructions: https://github.com/ckarisch/ContaoCookieConsentBundle",
     "keywords": [
   		"contao",
   		"cookie",
+  		"cookies",
+      "dsgvo",
       "cookieconsent",
   		"opt-in",
   		"cookiebar",
