@@ -3,7 +3,7 @@ foreach($this->cssFiles as $cssFile) {
     $GLOBALS['TL_CSS'][] = $cssFile . ($this->combineAssets ? '|static' : '');
 }
 
-$GLOBALS['TL_JAVASCRIPT'][] = 'bundles/contaocookieconsent/js/cookieconsent.min.js|static';
+$GLOBALS['TL_JAVASCRIPT'][] = 'bundles/contaocookieconsent/js/cookieconsent.min.js|async';
 ?>
 
 <div id="<?= $this->cookie ?>" class="mod_cookieconsent" data-cookiebar="<?= $this->cookie ?>" data-cookiebar-max-value="<?= $this->maxValue ?>"<?php if ($this->ttl): ?> data-cookiebar-ttl="<?= $this->ttl ?>"<?php endif; ?>>
