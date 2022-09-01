@@ -12,7 +12,7 @@ $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/contaocookieconsent/js/cookieconsent.min.
 		<div class="privacy_inside">
 			<div class="privacy_content">
 				<div class="cookie_settings">
-					<h1 class="cookie_info"><?= $this->text["heading"] ?></h1>
+					<span class="cookie_info"><?= $this->text["heading"] ?></span>
 					<form id="cookie_settings" name="cookie_settings" method="post">
 						<div class="radio_container cookies tab">
 							<div class="palette">
