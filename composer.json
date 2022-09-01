@@ -1,17 +1,17 @@
 {
-    "name": "Contao Cookie Opt In Popup",
+    "name": "formundzeichen/contao-cookie-opt-in-popup",
     "type": "contao-bundle",
     "description": "Responsive cookie consent plugin for Contao. The plugin provides different cookie privacy settings for the visitor. Google Analytics is only loaded when the visitor agrees to enable statistics. The plugin supports OnePages - no need to reload page after setting privacy settings. Installation instructions: https://github.com/ckarisch/ContaoCookieConsentBundle",
     "keywords": [
-  		"contao",
-  		"cookie",
-  		"cookies",
-      "dsgvo",
-      "cookieconsent",
-  		"opt-in",
-  		"cookiebar",
-  		"cookie popup"
-  	],
+        "contao",
+        "cookie",
+        "cookies",
+        "dsgvo",
+        "cookieconsent",
+        "opt-in",
+        "cookiebar",
+        "cookie popup"
+    ],
     "homepage": "https://www.formundzeichen.at/plugin/contao-cookie-popup.html",
     "license": "LGPL-3.0-or-later",
     "authors": [
@@ -46,8 +46,8 @@
             "Formundzeichen\\ContaoCookieConsentBundle\\": "src/"
         },
         "classmap": [
-					"src/Resources/contao/"
-    		],
+            "src/Resources/contao/"
+        ],
         "exclude-from-classmap": [
             "src/Resources/contao/cache/",
             "src/Resources/contao/config/",
