@@ -30,31 +30,29 @@ class ContaoBackendMessages extends \Backend
         $messages = array();
 
         $templateErrors = $this->checkTemplates();
-        if(!empty($templateErrors))
-        {
+        if (!empty($templateErrors)) {
             $messages[] = (object) array(
-              'heading' => 'Contao Cookie Consent',
-              'content' => 'Das Plugin ist nicht vollständig eingerichtet.',
-              'footer' => '<a class="tl_submit" target="_blank" rel="noopener" href="https://www.formundzeichen.at/plugin/contao-cookie-popup.html">Installationsanleitung</a>'
+                'heading' => 'Contao Cookie Consent',
+                'content' => 'Das Plugin ist nicht vollständig eingerichtet.',
+                'footer' => '<a class="tl_submit" target="_blank" rel="noopener" href="https://www.formundzeichen.at/plugin/contao-cookie-popup.html">Installationsanleitung</a>'
             );
 
             $messages[] = (object) array(
-              'error' => true,
-              'heading' => 'Template Fehler',
-              'content' => 'Die folgenden Templates wurden nicht gefunden. Dieser Fehler kann durch den Import der Standardtemplates behoben werden.',
-              'list' => $templateErrors,
-              'footer' => '<a class="tl_submit" href="/contao?do=Cookies">Template Import</a>'
+                'error' => true,
+                'heading' => 'Template Fehler',
+                'content' => 'Die folgenden Templates wurden nicht gefunden. Dieser Fehler kann durch den Import der Standardtemplates behoben werden.',
+                'list' => $templateErrors,
+                'footer' => '<a class="tl_submit" href="/contao?do=Cookies">Template Import</a>'
             );
         }
 
         $licenseInfo = $this->checkLicense();
-        if(isset($licenseInfo))
-        {
+        if (isset($licenseInfo)) {
             $messages[] = (object) array(
-              'error' => false,
-              'heading' => $licenseInfo['heading'],
-              'content' => $licenseInfo['content'],
-              'footer' => ''
+                'error' => false,
+                'heading' => $licenseInfo['heading'],
+                'content' => $licenseInfo['content'],
+                'footer' => ''
             );
         }
 
@@ -63,52 +61,51 @@ class ContaoBackendMessages extends \Backend
         return $template->parse();
     }
 
-    private function checkTemplates() {
+    private function checkTemplates()
+    {
         $errors = array();
 
         $strFolder = 'vendor/formundzeichen/contao-cookie-consent-bundle/src/Resources/frontendTemplates';
         $strDestinationFolder = 'templates';
         $objFiles = Files::getInstance();
 
-				$arrFolders = scan(TL_ROOT.'/'.$strFolder);
+        $arrFolders = scan(TL_ROOT . '/' . $strFolder);
 
-				foreach($arrFolders as $f)
-				{
-  					$strSource = $strFolder.'/'.$f;
-  					$strDestination = $strDestinationFolder.'/'.$f;
-            $fileExists = file_exists(TL_ROOT.'/'.$strDestination);
+        foreach ($arrFolders as $f) {
+            $strSource = $strFolder . '/' . $f;
+            $strDestination = $strDestinationFolder . '/' . $f;
+            $fileExists = file_exists(TL_ROOT . '/' . $strDestination);
 
-  					if(!$fileExists) {
+            if (!$fileExists) {
                 $errors[] = $f;
             }
-				}
+        }
 
         return $errors;
     }
 
-    public function checkLicense($key = null, $checkTime = true) {
-        if(!isset($key)) {
+    public function checkLicense($key = null, $checkTime = true)
+    {
+        if (!isset($key)) {
             $key = \Config::get('fzCookiesLicense');
         }
-        if($key == '') $key = null;
+        if ($key == '') $key = null;
         $licenseLevel = \Config::get('fzCookiesLicenseLevel');
         $nextCheck = \Config::get('fzCookiesNextLicenseCheck');
 
-        if(isset($key)) {
+        if (isset($key)) {
             $api = 'checkKey';
-        }
-        else {
+        } else {
             $api = 'getKey';
         }
 
         $domain = $_SERVER['SERVER_NAME'];
 
-        if(!isset($nextCheck)) {
+        if (!isset($nextCheck)) {
             $nextCheck = 0;
         }
 
-        if(!$checkTime || $nextCheck < time())
-        {
+        if (!$checkTime || $nextCheck < time()) {
             $url = 'https://shop.formundzeichen.at/api/' . $api;
 
             $data = $this->callAPI('POST', $url, json_encode(array(
@@ -118,35 +115,34 @@ class ContaoBackendMessages extends \Backend
             ), JSON_FORCE_OBJECT));
 
 
-            if($data && $data != 'Internal Server Error') {
+            if ($data && $data != 'Internal Server Error') {
                 $json = json_decode($data, true);
 
                 $license = $json['key'];
                 $licenseLevel = $json['licenseLevel'];
                 $keyValid = $json['keyValid'];
+                $domainFromApi = $json['domain'];
 
-                if(!$keyValid) {
+                if ($domainFromApi && $domain == $domainFromApi && !$keyValid) {
                     \Config::persist('fzCookiesLicense', null);
                     \Config::persist('fzCookiesLicenseLevel', 1);
-                }
-                else {
-                    if($license) {
-            		      \Config::persist('fzCookiesLicense', $license);
-                          // 2Do: check domainChanged
-                      }
-
-              		\Config::persist('fzCookiesLicenseLevel', $licenseLevel);
+                } else {
+                    if ($license) {
+                        \Config::persist('fzCookiesLicense', $license);
+                        // 2Do: check domainChanged
+                    }
+                    if ($licenseLevel == 1 || $licenseLevel == 2) {
+                        \Config::persist('fzCookiesLicenseLevel', $licenseLevel);
+                    }
                 }
                 \Config::persist('fzCookiesNextLicenseCheck', time() + (3600));
-            }
-            else {
+            } else {
                 // Server responded an internal server error
                 \Config::persist('fzCookiesNextLicenseCheck', time() + (3600));
             }
-        }
+        } 
 
-        if ($licenseLevel >= 2)
-        {
+        if ($licenseLevel >= 2) {
             return array(
                 'heading' => 'Cookie Popup Premium',
                 'content' => 'Premium Lizenz ist aktiv. Alle Funktionen sind aktiviert.'
@@ -158,35 +154,37 @@ class ContaoBackendMessages extends \Backend
         );
     }
 
-    private function callAPI($method, $url, $data){
-       $curl = curl_init();
-       switch ($method){
-          case "POST":
-             curl_setopt($curl, CURLOPT_POST, 1);
-             if ($data)
-                curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
-             break;
-          case "PUT":
-             curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "PUT");
-             if ($data)
-                curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
-             break;
-          default:
-             if ($data)
-                $url = sprintf("%s?%s", $url, http_build_query($data));
-       }
-       // OPTIONS:
-       curl_setopt($curl, CURLOPT_URL, $url);
-       curl_setopt($curl, CURLOPT_HTTPHEADER, array(
-          'Content-Type: application/json',
-       ));
-       curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-       curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
-       // EXECUTE:
-       $result = curl_exec($curl);
-       if(!$result){ return false; }
-       curl_close($curl);
-       return $result;
+    private function callAPI($method, $url, $data)
+    {
+        $curl = curl_init();
+        switch ($method) {
+            case "POST":
+                curl_setopt($curl, CURLOPT_POST, 1);
+                if ($data)
+                    curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+                break;
+            case "PUT":
+                curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "PUT");
+                if ($data)
+                    curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+                break;
+            default:
+                if ($data)
+                    $url = sprintf("%s?%s", $url, http_build_query($data));
+        }
+        // OPTIONS:
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, array(
+            'Content-Type: application/json',
+        ));
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+        // EXECUTE:
+        $result = curl_exec($curl);
+        if (!$result) {
+            return false;
+        }
+        curl_close($curl);
+        return $result;
     }
-
 }
