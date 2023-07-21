@@ -18,7 +18,8 @@ class ContaoBackendMessages extends \Backend
     public function __construct()
     {
         parent::__construct();
-        \BackendUser::authenticate();
+        $objUser = \BackendUser::getInstance();
+        $objUser->authenticate();
     }
 
 
